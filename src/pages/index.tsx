@@ -3,9 +3,9 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 import { useFloat, inViewProps, staggerProps } from '@/utils';
-import { Header, Container, CardGrid } from '@/components/layout';
+import { Header, Footer, Container, CardGrid } from '@/components/layout';
 import { Text, Title, Grid, Autotext, Light } from '@/components/decorations';
-import { Button } from '@/components/controls';
+import { ButtonLink } from '@/components/controls';
 
 import MyPhoto from '@public/me.jpg';
 import Sphere from '@public/sphere.png';
@@ -118,7 +118,13 @@ export default function Home({ posts }: PageProps) {
               </div>
               <CardGrid className="mb-9" posts={posts} />
               <div className="text-center">
-                <Button className="px-[75px] py-[18px]">More work</Button>
+                <ButtonLink
+                  href="/work"
+                  className="px-[75px] py-[18px]"
+                  scroll={false}
+                >
+                  More work
+                </ButtonLink>
               </div>
             </Container>
           </div>
@@ -312,51 +318,7 @@ export default function Home({ posts }: PageProps) {
             </Container>
           </div>
         </div>
-        {/* Footer */}
-        <div
-          className="relative z-0 w-full border-b-[1px] py-24
-          dark:border-y-neutral-900 dark:bg-black dark:text-white"
-        >
-          <Container
-            {...staggerProps.parent}
-            className="relative z-[1] flex flex-col justify-between md:flex-row"
-          >
-            <motion.h1
-              {...staggerProps.children}
-              className="mb-10 bg-gradient-to-b from-[#CD62FF] to-[#FF50B9] bg-clip-text
-              font-radwave text-4xl text-transparent md:mb-0 md:text-6xl"
-            >
-              Lets
-              <br />
-              Work
-              <br />
-              Together
-            </motion.h1>
-            <motion.div
-              {...staggerProps.children}
-              className="text-left md:text-right"
-            >
-              <h2 className="mb-2 font-radwave text-3xl">Contact me</h2>
-              <a href="mailto:lshegay@icloud.com" className="underline">
-                lshegay@icloud.com
-              </a>
-            </motion.div>
-          </Container>
-          <div className="absolute top-0 left-0 z-0 h-full w-full overflow-hidden">
-            <Container className="relative h-full">
-              <Light
-                className="absolute left-0 top-[-150px]"
-                color="rgb(173 85 255)"
-                radius={100}
-              />
-              <Light
-                color="rgb(255 0 0)"
-                className="absolute right-0 bottom-[20px]"
-                radius={200}
-              />
-            </Container>
-          </div>
-        </div>
+        <Footer />
       </div>
     </>
   );

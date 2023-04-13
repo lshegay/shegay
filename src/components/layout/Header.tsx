@@ -6,7 +6,7 @@ import Container from './Container';
 
 export type Props = DivProps;
 
-const MENU = [
+export const MENU = [
   {
     name: 'Work',
     link: '/work',
@@ -39,10 +39,12 @@ export default function Header({ children, className, ...props }: Props) {
         </Link>
         <ul className="flex">
           {MENU.map(({ name, link }) => (
-            <li key={link} className="mr-5">
+            <li key={link} className="mr-2">
               <Link
-                className="text-sm font-bold transition-colors
-                ease-out-expo dark:text-neutral-500 dark:hover:text-white"
+                className="rounded-lg p-2 text-sm font-bold
+                transition-colors ease-out dark:text-neutral-500
+                dark:hover:bg-neutral-800 dark:hover:text-white
+                dark:active:bg-black dark:active:text-neutral-300"
                 href={link}
                 style={{
                   ...(router.asPath == link ? { color: 'white' } : {}),

@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { motion } from 'framer-motion';
-import { CardGrid, Container, Header } from '@/components/layout';
-import { Grid, Light, Title } from '@/components/decorations';
+import { CardGrid, Container, Footer, Header } from '@/components/layout';
+import { Light } from '@/components/decorations';
 
 type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -11,8 +11,8 @@ export default function Work({ posts }: PageProps) {
       <Head>
         <title>Work</title>
       </Head>
-      <div className="h-screen w-full dark:bg-black dark:text-white">
-        <div className="relative z-[1] flex h-full flex-col">
+      <div className="h-full w-full dark:bg-black dark:text-white">
+        <div className="relative z-[1] flex h-full min-h-screen flex-col">
           <Header className="shrink-0" />
           <Container>
             <div className="my-24 w-full text-center">
@@ -32,6 +32,7 @@ export default function Work({ posts }: PageProps) {
             <Light color="#FF2121" className="absolute right-0 top-1/3" />
           </Container>
         </div>
+        <Footer />
       </div>
     </>
   );
