@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  .dark {
+    color-scheme: dark;
+  }
+}
+
 ::selection {
   background-color: #cb5dfd51;
   color: white;

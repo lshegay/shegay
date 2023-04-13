@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import cl from 'classnames';
 
 export type Props = {
@@ -5,21 +6,24 @@ export type Props = {
   className?: string;
   radius?: number;
   opacity?: number;
+  blur?: number;
 };
 
 export default function Light({
   className,
   color = '#D321FF',
-  radius = 512,
+  radius = 256,
   opacity = 0.2,
+  blur = 170,
 }: Props) {
   return (
-    <div
-      className={cl('opacity-10 blur-[170px] rounded-full', className)}
+    <motion.div
+      className={cl('rounded-full', className)}
       style={{
+        filter: `blur(${blur}px)`,
         backgroundColor: color,
-        width: radius,
-        height: radius,
+        width: radius * 2,
+        height: radius * 2,
         opacity,
       }}
     />

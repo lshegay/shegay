@@ -1,4 +1,5 @@
 import type { AppProps } from 'next/app';
+import Head from 'next/head';
 import { Inter } from 'next/font/google';
 import localFont from 'next/font/local';
 
@@ -16,10 +17,16 @@ const roadrage = localFont({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <main
-      className={`${radwave.variable} ${roadrage.variable} ${inter.variable} font-sans antialiased`}
-    >
-      <Component {...pageProps} />
-    </main>
+    <>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="theme-color" content="#FF50B9" />
+      </Head>
+      <main
+        className={`${radwave.variable} ${roadrage.variable} ${inter.variable} font-sans antialiased`}
+      >
+        <Component {...pageProps} />
+      </main>
+    </>
   );
 }

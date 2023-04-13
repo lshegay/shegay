@@ -1,9 +1,10 @@
 import type { DivProps } from 'react-html-props';
 import cl from 'classnames';
 
-import Retro from './retro.module.scss';
 import Container from '../layout/Container';
 import Light from './Light';
+
+import Retro from './retro.module.scss';
 
 export type Props = DivProps;
 

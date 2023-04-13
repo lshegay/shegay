@@ -4,7 +4,6 @@
   "endOfLine": "lf",
   "singleAttributePerLine": false,
   "bracketSameLine": false,
-  "jsxBracketSameLine": false,
   "jsxSingleQuote": false,
   "printWidth": 80,
   "quoteProps": "as-needed",

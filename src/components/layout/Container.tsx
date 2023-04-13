@@ -1,12 +1,16 @@
 import type { DivProps } from 'react-html-props';
+import { HTMLMotionProps, motion } from 'framer-motion';
 import cl from 'classnames';
 
-export type Props = DivProps;
+export type Props = HTMLMotionProps<'div'>;
 
 export default function Container({ children, className, ...props }: Props) {
   return (
-    <div {...props} className={cl('max-w-[1120px] m-auto', className)}>
+    <motion.div
+      {...props}
+      className={cl('lg:w-[1120px] lg:mx-auto px-5', className)}
+    >
       {children}
-    </div>
+    </motion.div>
   );
 }

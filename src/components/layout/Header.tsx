@@ -1,8 +1,8 @@
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import type { DivProps } from 'react-html-props';
 import cl from 'classnames';
-
-import Container from '../layout/Container';
-import Link from 'next/link';
+import Container from './Container';
 
 export type Props = DivProps;
 
@@ -12,16 +12,14 @@ const MENU = [
     link: '/work',
   },
   {
-    name: 'Blog',
-    link: '/blog',
-  },
-  {
     name: 'Get in touch',
     link: '/touch',
   },
 ];
 
 export default function Header({ children, className, ...props }: Props) {
+  const router = useRouter();
+
   return (
     <div
       {...props}
@@ -33,9 +31,12 @@ export default function Header({ children, className, ...props }: Props) {
       )}
     >
       <Container className="flex h-full items-center justify-between">
-        <h1 className="font-radwave">
-          <Link href="/">SHEGAY</Link>
-        </h1>
+        <Link
+          className="font-radwave transition-opacity duration-75 hover:opacity-50"
+          href="/"
+        >
+          SHEGAY
+        </Link>
         <ul className="flex">
           {MENU.map(({ name, link }) => (
             <li key={link} className="mr-5">
@@ -43,6 +44,9 @@ export default function Header({ children, className, ...props }: Props) {
                 className="text-sm font-bold transition-colors
                 ease-out-expo dark:text-neutral-500 dark:hover:text-white"
                 href={link}
+                style={{
+                  ...(router.asPath == link ? { color: 'white' } : {}),
+                }}
               >
                 {name}
               </Link>
