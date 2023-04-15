@@ -1,9 +1,53 @@
-import { getAllPosts, getPostBySlug, markdownToHtml, Post } from '@/utils/ssg';
-import { GetStaticPaths, GetStaticPropsContext } from 'next';
+import { motion } from 'framer-motion';
+import cl from 'classnames';
+import {
+  GetStaticPaths,
+  GetStaticPropsContext,
+  InferGetStaticPropsType,
+} from 'next';
+import Head from 'next/head';
+import Image from 'next/image';
+import { MDXRemote, MDXRemoteProps } from 'next-mdx-remote';
+import { Light, Text } from '@/components/decorations';
+import { Container, Footer, Header } from '@/components/layout';
+import { getAllPosts, getPostBySlug } from '@/utils/ssg';
+import { Section, HoverImage } from '@/components/markdown';
 
-export type Props = { post: Post };
+export type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
-export default function Work({ post }: Props) {}
+export const components: MDXRemoteProps['components'] = {
+  Image: HoverImage,
+  Section,
+};
+
+export default function Project({ post: { source, ...post } }: PageProps) {
+  return (
+    <>
+      <Head>
+        <title>{post.title}</title>
+      </Head>
+      <div className="h-full w-full dark:bg-black dark:text-white">
+        <div className="relative z-[1] flex h-full min-h-screen flex-col">
+          <Header className="shrink-0" />
+          <Container
+            className="prose prose-pink my-24 max-w-none
+              dark:prose-invert prose-h4:mb-0
+              prose-p:leading-8 prose-img:my-0"
+          >
+            <MDXRemote {...source} frontmatter={post} components={components} />
+          </Container>
+        </div>
+        <div className="absolute top-0 left-0 z-0 h-full w-full overflow-hidden">
+          <Container className="relative h-full">
+            <Light className="absolute left-0 top-[10%]" />
+            <Light color="#FF2121" className="absolute right-0 top-1/3" />
+          </Container>
+        </div>
+        <Footer />
+      </div>
+    </>
+  );
+}
 
 export async function getStaticProps({
   params,
@@ -12,21 +56,17 @@ export async function getStaticProps({
 }>) {
   if (!params) return null;
 
-  const post = getPostBySlug(params.slug);
-  const content = await markdownToHtml(post.content || '');
+  const post = await getPostBySlug(params.slug);
 
   return {
     props: {
-      post: {
-        ...post,
-        content,
-      },
+      post,
     },
   };
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = getAllPosts();
+  const posts = await getAllPosts();
 
   return {
     paths: posts.map((post) => {

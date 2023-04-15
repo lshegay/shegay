@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import Script from 'next/script';
 import { AnimatePresence } from 'framer-motion';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
@@ -35,6 +36,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="theme-color" content="#FF50B9" />
       </Head>
+      <Script id="scrollRestoration">{`window.history.scrollRestoration = "manual"`}</Script>
       <main
         className={`${radwave.variable} ${roadrage.variable} ${inter.variable}
         font-sans antialiased`}

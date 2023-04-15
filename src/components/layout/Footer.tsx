@@ -10,8 +10,8 @@ import Container from './Container';
 import { Light } from '../decorations';
 import { MENU } from './Header';
 
-const FOOTER_MENU = [{ link: '/', name: 'Home' }, ...MENU];
-const SOCIALS = [
+export const FOOTER_MENU = [{ link: '/', name: 'Home' }, ...MENU];
+export const SOCIALS = [
   { link: 'https://github.com/lshegay', icon: <FaGithub /> },
   { link: 'https://www.behance.net/shegay', icon: <FaBehance /> },
   { link: 'https://vk.com/korewashegay', icon: <FaVk /> },
@@ -50,8 +50,8 @@ export default function Footer({ className, ...props }: Props) {
           <Link
             href="mailto:lshegay@icloud.com"
             className="mb-8 -ml-2 inline-flex items-center rounded-xl p-2
-            transition-colors hover:bg-neutral-900
-            active:bg-black active:text-neutral-600"
+            transition-colors dark:hover:bg-neutral-800/50
+            dark:active:bg-transparent dark:active:text-neutral-600"
           >
             <span className="mr-5 text-2xl font-bold">lshegay@icloud.com</span>
             <FaArrowRight />
@@ -63,8 +63,8 @@ export default function Footer({ className, ...props }: Props) {
                 href={link}
                 className="mr-4 -ml-2 rounded-lg p-2 font-bold
                 transition-colors ease-out
-                dark:hover:bg-neutral-800 dark:hover:text-white
-                dark:active:bg-black dark:active:text-neutral-300"
+                dark:hover:bg-neutral-800/50 dark:hover:text-white
+                dark:active:bg-transparent dark:active:text-neutral-600"
               >
                 {icon}
               </Link>
@@ -80,9 +80,9 @@ export default function Footer({ className, ...props }: Props) {
               <motion.li key={link} className="mb-2" {...staggerProps.children}>
                 <Link
                   className="-ml-2 rounded-lg p-2 font-bold transition-colors
-                ease-out dark:text-neutral-500 dark:hover:bg-neutral-800
-                dark:hover:text-white dark:active:bg-black
-                dark:active:text-neutral-300 md:-mr-2"
+                ease-out dark:text-neutral-500 dark:hover:bg-neutral-800/50
+                dark:hover:text-white dark:active:bg-transparent
+                dark:active:text-neutral-600 md:-mr-2"
                   href={link}
                   style={{
                     ...(router.asPath == link ? { color: 'white' } : {}),

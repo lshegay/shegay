@@ -177,9 +177,9 @@ export default function Home({ posts }: PageProps) {
                     ref={photo.anchor}
                     src={MyPhoto}
                     alt="My photo"
-                    className="w-screen rounded-3xl md:h-[352px] md:w-auto"
-                    sizes="(max-width: 768px) 100vw, 264px"
+                    className="w-screen rounded-xl md:mx-auto md:h-auto md:w-full md:max-w-[330px] md:rounded-full"
                     draggable={false}
+                    placeholder="blur"
                   />
                 </motion.div>
                 <div className="absolute z-[1] flex h-full w-full items-center justify-center">
@@ -215,15 +215,6 @@ export default function Home({ posts }: PageProps) {
                     y: sphere.y,
                     opacity: sphere.opacity,
                   }}
-                  drag
-                  dragSnapToOrigin
-                  dragElastic={0.2}
-                  dragConstraints={{
-                    left: 100,
-                    top: 100,
-                    right: 100,
-                    bottom: 100,
-                  }}
                 >
                   <Image
                     ref={sphere.anchor}
@@ -231,6 +222,7 @@ export default function Home({ posts }: PageProps) {
                     alt="Sphere"
                     className="h-[288px]"
                     draggable={false}
+                    placeholder="blur"
                   />
                 </motion.div>
                 <div className="absolute z-[1] flex h-full w-full items-center justify-center">
@@ -273,7 +265,7 @@ export default function Home({ posts }: PageProps) {
               </Title>
               <motion.div
                 {...staggerProps.parent}
-                className="grid gap-8 sm:grid-cols-2 md:grid-cols-3"
+                className="grid gap-x-8 gap-y-12 sm:grid-cols-2 md:grid-cols-3"
               >
                 <motion.div {...staggerProps.children}>
                   <p>Full-stack developer</p>

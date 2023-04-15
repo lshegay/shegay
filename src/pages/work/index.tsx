@@ -12,7 +12,10 @@ export default function Work({ posts }: PageProps) {
         <title>Work</title>
       </Head>
       <div className="h-full w-full dark:bg-black dark:text-white">
-        <div className="relative z-[1] flex h-full min-h-screen flex-col">
+        <div
+          className="relative z-[1] flex h-full min-h-screen flex-col
+          border-b-[1px] dark:border-y-neutral-900"
+        >
           <Header className="shrink-0" />
           <Container>
             <div className="my-24 w-full text-center">

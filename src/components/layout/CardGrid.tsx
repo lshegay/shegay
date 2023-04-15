@@ -3,7 +3,7 @@ import { Card } from '../controls';
 import type { DivProps } from 'react-html-props';
 import type { Post } from '@/utils/ssg';
 
-export type Props = DivProps & { posts: Post[] };
+export type Props = DivProps & { posts: Omit<Post, 'source'>[] };
 
 export default function CardGrid({ className, posts, ...props }: Props) {
   return (
@@ -19,7 +19,8 @@ export default function CardGrid({ className, posts, ...props }: Props) {
         <Card
           key={post.slug}
           {...post}
-          link={`/work/${post.slug}`}
+          link={post.redirect ?? `/work/${post.slug}`}
+          target={post.redirect && '_blank'}
           images={post.thumbnails}
           className={cl({ wide: post.wide })}
         />

@@ -1,14 +1,14 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import type { DivProps } from 'react-html-props';
-import Image from 'next/image';
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
-import { useDebounce } from 'use-debounce';
+import Image from 'next/image';
+import Link from 'next/link';
 import cl from 'classnames';
+import { useDebounce } from 'use-debounce';
+import type { DivProps } from 'react-html-props';
 
 import Light from '../decorations/Light';
-import { useRouter } from 'next/router';
 import type { Thumbnail } from '@/utils/ssg';
-import Skeleton from '../decorations/Skeleton';
+import { transition } from '@/utils';
 
 type Props = DivProps & {
   title: string;
@@ -16,6 +16,7 @@ type Props = DivProps & {
   link: string;
   images?: Thumbnail[];
   color?: string;
+  target?: string;
 };
 
 export default function Card({
@@ -25,10 +26,11 @@ export default function Card({
   description,
   images = [],
   color = '#EA5400',
+  target,
 }: Props) {
-  const router = useRouter();
-  const card = useRef<HTMLAnchorElement>(null);
-  const [width, setWidth] = useState(350);
+  const card = useRef<HTMLDivElement>(null);
+  const [loaded, setLoaded] = useState<Record<string, boolean>>({});
+  const [width, setWidth] = useState(337);
   const [lagWidth] = useDebounce(width, 500);
 
   const { scrollYProgress } = useScroll({
@@ -83,22 +85,31 @@ export default function Card({
             display:
               index > 0 && images[0].width > contentWidth ? 'none' : 'block',
           }}
+          variants={{
+            hovered: { scale: 1.05 },
+            pressed: { scale: 0.95 },
+          }}
+          transition={transition}
         >
-          <motion.div
-            style={{
-              opacity: scrollYProgress,
-            }}
-          >
-            <Image
-              {...img}
-              alt={img.alt}
-              className="relative z-[1] rounded-t-lg shadow-xl shadow-black"
-              style={{
-                borderBottomLeftRadius: length == 1 ? '0.5rem' : undefined,
-                borderBottomRightRadius: length == 1 ? '0.5rem' : undefined,
-              }}
-              draggable={false}
-            />
+          <motion.div style={{ opacity: scrollYProgress }}>
+            <motion.div
+              animate={{ opacity: loaded[img.src] ? 1 : 0 }}
+              variants={{ pressed: { opacity: 0.7 } }}
+            >
+              <Image
+                {...img}
+                alt={img.alt}
+                className="relative z-[1] h-auto rounded-t-lg shadow-xl shadow-black"
+                style={{
+                  borderBottomLeftRadius: length == 1 ? '0.5rem' : undefined,
+                  borderBottomRightRadius: length == 1 ? '0.5rem' : undefined,
+                }}
+                draggable={false}
+                onLoadingComplete={(d) => {
+                  setLoaded((v) => ({ ...v, [img.src]: true }));
+                }}
+              />
+            </motion.div>
           </motion.div>
         </motion.div>
       );
@@ -106,58 +117,51 @@ export default function Card({
       accumulateWidth += img.width;
       return element;
     });
-  }, [images, lagWidth, scrollYProgress, y]);
-
-  const move = () => {
-    router.push(link);
-  };
+  }, [images, lagWidth, scrollYProgress, y, loaded]);
 
   return (
-    <motion.a
-      href={link}
+    <motion.div
       ref={card}
       className={cl(
         `relative h-[345px] rounded-[20px]
         overflow-hidden border-[1px] border-[#303030] text-left`,
         className
       )}
-      whileHover={{ y: -10 }}
-      whileTap={{ y: 0, scale: 0.95 }}
-      transition={{
-        type: 'spring',
-        damping: 20,
-        stiffness: 100,
+      variants={{
+        hovered: { y: -10 },
+        pressed: { y: 0, scale: 0.95 },
       }}
-      onClick={move}
-      onKeyPress={(e) => {
-        if (e.key == 'Enter') move();
-      }}
+      whileHover="hovered"
+      whileTap="pressed"
+      transition={transition}
     >
-      <div
-        className="absolute top-0 left-0 z-[1] h-full
+      <Link href={link} scroll={false} target={target}>
+        <div
+          className="absolute top-0 left-0 z-[1] h-full
           w-full bg-gradient-to-b from-transparent via-transparent to-black opacity-80"
-      />
-      <div className="relative flex h-full flex-col px-11 pt-7">
-        <div className="z-[2] mb-7">
-          <h3 className="mb-1 text-xl font-bold text-black dark:text-white">
-            {title}
-          </h3>
-          <p className="dark:text-neutral-400">{description}</p>
-        </div>
-        <div className="relative z-0 flex h-full w-full">{imgElements}</div>
-      </div>
-      <div
-        className="absolute top-0 left-0 z-[-1] flex h-full
-        w-full justify-center overflow-hidden dark:bg-black"
-      >
-        <Light
-          color={color}
-          className="mt-[-50px]"
-          blur={70}
-          opacity={0.4}
-          radius={80}
         />
-      </div>
-    </motion.a>
+        <div className="relative flex h-full flex-col px-11 pt-7">
+          <div className="z-[2] mb-7">
+            <h3 className="mb-1 text-xl font-bold text-black dark:text-white">
+              {title}
+            </h3>
+            <p className="dark:text-neutral-400">{description}</p>
+          </div>
+          <div className="relative z-0 flex h-full w-full">{imgElements}</div>
+        </div>
+        <div
+          className="absolute top-0 left-0 z-[-1] flex h-full
+        w-full justify-center overflow-hidden dark:bg-black"
+        >
+          <Light
+            color={color}
+            className="mt-[-50px]"
+            blur={70}
+            opacity={0.4}
+            radius={80}
+          />
+        </div>
+      </Link>
+    </motion.div>
   );
 }

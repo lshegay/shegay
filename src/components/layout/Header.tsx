@@ -43,8 +43,8 @@ export default function Header({ children, className, ...props }: Props) {
               <Link
                 className="rounded-lg p-2 text-sm font-bold
                 transition-colors ease-out dark:text-neutral-500
-                dark:hover:bg-neutral-800 dark:hover:text-white
-                dark:active:bg-black dark:active:text-neutral-300"
+                dark:hover:bg-neutral-800/50 dark:hover:text-white
+                dark:active:bg-transparent dark:active:text-neutral-600"
                 href={link}
                 style={{
                   ...(router.asPath == link ? { color: 'white' } : {}),

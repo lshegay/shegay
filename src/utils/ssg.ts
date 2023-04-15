@@ -1,8 +1,6 @@
 import fs from 'fs';
 import { join } from 'path';
-import { remark } from 'remark';
-import html from 'remark-html';
-import matter from 'gray-matter';
+import { serialize } from 'next-mdx-remote/serialize';
 
 export type Thumbnail = {
   alt: string;
@@ -19,23 +17,20 @@ export type Post = {
   thumbnails: Thumbnail[];
   wide: boolean;
   slug: string;
-  content: string;
+  source: any;
+  redirect: string;
 };
-
-export async function markdownToHtml(markdown: string) {
-  const result = await remark().use(html).process(markdown);
-  return result.toString();
-}
 
 const postsDirectory = join(process.cwd(), 'works');
 
 export async function getPostBySlug(slug: string): Promise<Post> {
-  const realSlug = slug.replace(/\.md$/, '');
-  const fullPath = join(postsDirectory, `${realSlug}.md`);
+  const realSlug = slug.replace(/\.mdx$/, '');
+  const fullPath = join(postsDirectory, `${realSlug}.mdx`);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
-  const { data, content } = matter(fileContents);
+  const mdxSource = await serialize(fileContents, { parseFrontmatter: true });
+  const { frontmatter: data, ...source }: any = mdxSource;
 
-  return {
+  const serializedData = {
     title: data.title,
     description: data.description,
     date: new Intl.DateTimeFormat('en-EN').format(data.date),
@@ -43,14 +38,21 @@ export async function getPostBySlug(slug: string): Promise<Post> {
     thumbnails: data.thumbnails,
     wide: !!data.wide,
     slug: realSlug,
-    content,
+    redirect: data.redirect ?? null,
   };
+
+  return { ...serializedData, source };
 }
 
 export async function getAllPosts(limit?: number, order: string[] = []) {
   const slugs = fs.readdirSync(postsDirectory);
   const posts = (
-    await Promise.all(slugs.map((slug) => getPostBySlug(slug)))
+    await Promise.all(
+      slugs.map(async (slug) => {
+        const { source, ...post } = await getPostBySlug(slug);
+        return post;
+      })
+    )
   ).sort((post1, post2) => {
     if (order.length > 0)
       return order.indexOf(post1.slug) - order.indexOf(post2.slug);
