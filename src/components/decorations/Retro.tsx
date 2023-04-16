@@ -4,7 +4,7 @@ import cl from 'classnames';
 import Container from '../layout/Container';
 import Light from './Light';
 
-import Retro from './retro.module.scss';
+import Retro from './Retro.module.scss';
 
 export type Props = DivProps;
 
