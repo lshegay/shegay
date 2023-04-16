@@ -13,7 +13,7 @@ export default function Light({
   className,
   color = '#D321FF',
   radius = 300,
-  opacity = 0.15,
+  opacity = 0.1,
   blur = 170,
   ...props
 }: Props) {

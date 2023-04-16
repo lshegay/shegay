@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import {
   GetStaticPaths,
   GetStaticPropsContext,
@@ -18,7 +19,24 @@ export const components: MDXRemoteProps['components'] = {
   Section,
 };
 
+const colors = [
+  '#FF2121',
+  'rgb(0 62 255)',
+  '#F15D5D',
+  '#F329F8',
+  'rgb(0 62 255)',
+  '#D321FF',
+];
+
 export default function Project({ post: { source, ...post } }: PageProps) {
+  const [N, setN] = useState(4);
+
+  useEffect(() => {
+    if (typeof document == 'undefined') return;
+
+    setN(Math.round(document.body.scrollHeight / 600));
+  }, []);
+
   return (
     <>
       <NextSeo
@@ -29,7 +47,10 @@ export default function Project({ post: { source, ...post } }: PageProps) {
         }}
       />
       <div className="h-full w-full dark:bg-black dark:text-white">
-        <div className="relative z-[1] flex h-full min-h-screen flex-col">
+        <div
+          className="relative z-[1] flex h-full min-h-screen
+          flex-col border-b-[1px] dark:border-y-neutral-900"
+        >
           <Header className="shrink-0" />
           <Container
             className="prose prose-pink my-24 max-w-none
@@ -38,12 +59,21 @@ export default function Project({ post: { source, ...post } }: PageProps) {
           >
             <MDXRemote {...source} frontmatter={post} components={components} />
           </Container>
-        </div>
-        <div className="absolute top-0 left-0 z-0 h-full w-full overflow-hidden">
-          <Container className="relative h-full">
-            <Light className="absolute left-[256px] top-[30%]" />
-            <Light color="#FF2121" className="absolute right-[256px] top-1/2" />
-          </Container>
+          <div className="absolute top-0 left-0 z-0 h-full w-full overflow-hidden">
+            <Container className="relative h-full">
+              {new Array(N).fill(0).map((_, index) => (
+                <Light
+                  key={index}
+                  className="absolute"
+                  color={colors[index % colors.length]}
+                  style={{
+                    top: index * 600,
+                    ...(index % 2 ? { right: 0 } : {}),
+                  }}
+                />
+              ))}
+            </Container>
+          </div>
         </div>
         <Footer />
       </div>

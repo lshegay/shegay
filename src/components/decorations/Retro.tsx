@@ -13,8 +13,8 @@ export function Grid({ children, className, ...props }: Props) {
     <>
       <div className={cl(className)}>
         <Container className="relative h-full">
-          <Light className="absolute left-0 top-[10%]" />
-          <Light color="#FF2121" className="absolute right-0 top-1/3" />
+          <Light className="absolute left-[256px] top-1/3" />
+          <Light color="#FF2121" className="absolute right-[256px] top-1/2" />
         </Container>
         <div
           className={cl(
@@ -23,7 +23,7 @@ export function Grid({ children, className, ...props }: Props) {
           )}
         />
         <div
-          className="absolute top-0 left-0 h-full w-full bg-gradient-to-b from-black
+          className="absolute top-0 left-0 h-2/3 w-full bg-gradient-to-b from-black
       via-black to-transparent"
         />
       </div>

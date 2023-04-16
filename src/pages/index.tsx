@@ -93,7 +93,7 @@ export default function Home({ posts }: PageProps) {
           <div className="absolute top-0 left-0 h-full w-full overflow-hidden">
             <Grid className="absolute top-0 left-0 h-full w-full" />
             <Container className="relative h-full">
-              <Light className="absolute left-[256px] top-[30%]" />
+              <Light className="absolute left-[256px] top-1/3" />
               <Light
                 color="#FF2121"
                 className="absolute right-[256px] top-1/2"
@@ -136,12 +136,12 @@ export default function Home({ posts }: PageProps) {
               <Light
                 color="#FF2121"
                 className="absolute left-0 bottom-[400px]"
-                opacity={0.1}
+                radius={200}
               />
               <Light
                 color="rgb(0 62 255)"
                 className="absolute right-0 top-[300px]"
-                opacity={0.1}
+                radius={200}
               />
             </Container>
           </div>
