@@ -28,9 +28,9 @@ export default function Section({
       <div className="not-prose">
         <Text className=" mt-0 mb-4 text-2xl uppercase">{description}</Text>
         {header ? (
-          <Title className="text-7xl">{title}</Title>
+          <Title className="text-4xl md:text-7xl">{title}</Title>
         ) : (
-          <h1 className="text-5xl font-bold">{title}</h1>
+          <h1 className="text-3xl font-bold md:text-5xl">{title}</h1>
         )}
       </div>
       <div className="w-full shrink-0 lg:w-[500px]">{children}</div>

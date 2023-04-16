@@ -1,11 +1,13 @@
-import Head from 'next/head';
+import { InferGetStaticPropsType } from 'next';
 import Image from 'next/image';
+import { NextSeo } from 'next-seo';
 import { motion } from 'framer-motion';
 
 import { useFloat, inViewProps, staggerProps } from '@/utils';
 import { Header, Footer, Container, CardGrid } from '@/components/layout';
 import { Text, Title, Grid, Autotext, Light } from '@/components/decorations';
 import { Button } from '@/components/controls';
+import { getAllPosts } from '@/utils/ssg';
 
 import MyPhoto from '@public/me.jpg';
 import Sphere from '@public/sphere.png';
@@ -18,9 +20,7 @@ export default function Home({ posts }: PageProps) {
 
   return (
     <>
-      <Head>
-        <title>Home</title>
-      </Head>
+      <NextSeo />
       <div className="h-screen w-full dark:bg-black dark:text-white">
         {/* Landscape */}
         <div className="h-full">
@@ -59,9 +59,9 @@ export default function Home({ posts }: PageProps) {
                 {...staggerProps.children}
                 className="md:w-[60%] md:text-xl"
               >
-                I’m Leonid Shegay and I’m versatile software engineer and
-                full-stack web developer focused on making beautiful and
-                functional apps
+                I’m Leonid Shegay and I’m versatile software engineer and Full
+                Stack web developer focused on making beautiful and functional
+                apps
               </Text>
               <div className="absolute bottom-11 flex flex-col justify-center">
                 <span className="mb-5">Scroll Down</span>
@@ -315,9 +315,6 @@ export default function Home({ posts }: PageProps) {
     </>
   );
 }
-
-import { getAllPosts } from '@/utils/ssg';
-import { InferGetStaticPropsType } from 'next';
 
 export async function getStaticProps() {
   const posts = await getAllPosts(4, [

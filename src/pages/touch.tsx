@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import Head from 'next/head';
 import Link from 'next/link';
 import { FaArrowRight } from 'react-icons/fa';
+import { NextSeo } from 'next-seo';
 
 import { Light, Text, Title } from '@/components/decorations';
 import { Container, Footer, Header } from '@/components/layout';
@@ -14,9 +14,7 @@ import mac from '@public/mac.png';
 export default function Touch() {
   return (
     <>
-      <Head>
-        <title>Get in Touch</title>
-      </Head>
+      <NextSeo title="Get in Touch" />
       <div className="h-full w-full dark:bg-black dark:text-white">
         <div
           className="relative z-[1] flex flex-col
@@ -28,7 +26,10 @@ export default function Touch() {
               className="mb-[70px] w-full shrink-0 md:w-[500px]"
               {...staggerProps.parent}
             >
-              <Title className="mb-10 text-5xl" {...staggerProps.children}>
+              <Title
+                className="mb-10 text-4xl md:text-5xl"
+                {...staggerProps.children}
+              >
                 You have a job?
               </Title>
               <motion.p className="text-lg" {...staggerProps.children}>
@@ -80,7 +81,7 @@ export default function Touch() {
                 initial={{ opacity: 0 }}
                 className="absolute z-[1] flex h-full w-full items-center justify-center"
               >
-                <h1 className="mr-10 text-5xl font-bold">
+                <h1 className="mr-10 text-2xl font-bold md:text-5xl">
                   Let&apos;s get back
                 </h1>
                 <FaArrowRight className="text-2xl" />

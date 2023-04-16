@@ -1,17 +1,17 @@
-import Head from 'next/head';
+import { InferGetStaticPropsType } from 'next';
+import { NextSeo } from 'next-seo';
 import { motion } from 'framer-motion';
 
 import { CardGrid, Container, Footer, Header } from '@/components/layout';
 import { Light } from '@/components/decorations';
+import { getAllPosts } from '@/utils/ssg';
 
 type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 export default function Work({ posts }: PageProps) {
   return (
     <>
-      <Head>
-        <title>Work</title>
-      </Head>
+      <NextSeo title="Work" />
       <div className="h-full w-full dark:bg-black dark:text-white">
         <div
           className="relative z-[1] flex h-full min-h-screen flex-col
@@ -41,9 +41,6 @@ export default function Work({ posts }: PageProps) {
     </>
   );
 }
-
-import { getAllPosts } from '@/utils/ssg';
-import { InferGetStaticPropsType } from 'next';
 
 export async function getStaticProps() {
   const posts = await getAllPosts();

@@ -19,6 +19,7 @@ export type Post = {
   slug: string;
   source: any;
   redirect: string;
+  cover?: string;
 };
 
 const postsDirectory = join(process.cwd(), 'works');
@@ -39,6 +40,7 @@ export async function getPostBySlug(slug: string): Promise<Post> {
     wide: !!data.wide,
     slug: realSlug,
     redirect: data.redirect ?? null,
+    cover: data.cover ?? null,
   };
 
   return { ...serializedData, source };

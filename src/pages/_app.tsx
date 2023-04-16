@@ -1,11 +1,12 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Script from 'next/script';
-import { AnimatePresence } from 'framer-motion';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { Inter } from 'next/font/google';
 import localFont from 'next/font/local';
+import { DefaultSeo } from 'next-seo';
+import { AnimatePresence } from 'framer-motion';
 
 import Layout from '@/components/layout/Layout';
 import '@/styles/globals.css';
@@ -33,9 +34,50 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/favicons/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicons/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicons/favicon-16x16.png"
+        />
+        <link rel="shortcut icon" href="/favicons/favicon.ico" />
+        <link rel="manifest" href="/favicons/site.webmanifest" />
+        <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="theme-color" content="#FF50B9" />
       </Head>
+      <DefaultSeo
+        title="Leonid Shegay — Versatile Software Developer"
+        titleTemplate="%s — Leonid Shegay"
+        description="Leonid Shegay is a versatile software engineer
+        and full-stack web developer who is very passionate about IT!"
+        openGraph={{
+          type: 'website',
+          profile: {
+            firstName: 'Leonid',
+            lastName: 'Shegay',
+            username: 'lshegay',
+          },
+          images: [
+            {
+              url: '/opengraph.png',
+              width: 1200,
+              height: 630,
+              alt: 'Thumbnail — Leonid Shegay',
+            },
+          ],
+        }}
+      />
       <Script id="scrollRestoration">{`window.history.scrollRestoration = "manual"`}</Script>
       <main
         className={`${radwave.variable} ${roadrage.variable} ${inter.variable}

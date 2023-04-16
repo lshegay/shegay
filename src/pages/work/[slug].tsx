@@ -3,7 +3,7 @@ import {
   GetStaticPropsContext,
   InferGetStaticPropsType,
 } from 'next';
-import Head from 'next/head';
+import { NextSeo } from 'next-seo';
 import { MDXRemote, MDXRemoteProps } from 'next-mdx-remote';
 
 import { Light } from '@/components/decorations';
@@ -21,9 +21,13 @@ export const components: MDXRemoteProps['components'] = {
 export default function Project({ post: { source, ...post } }: PageProps) {
   return (
     <>
-      <Head>
-        <title>{post.title}</title>
-      </Head>
+      <NextSeo
+        title={post.title}
+        description={`${post.description} — Leonid Shegay`}
+        openGraph={{
+          images: post.cover ? [{ url: post.cover, alt: post.slug }] : [],
+        }}
+      />
       <div className="h-full w-full dark:bg-black dark:text-white">
         <div className="relative z-[1] flex h-full min-h-screen flex-col">
           <Header className="shrink-0" />

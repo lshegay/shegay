@@ -1,6 +1,8 @@
+import { motion } from 'framer-motion';
 import { useState } from 'react';
 import Image, { ImageProps } from 'next/image';
 import cl from 'classnames';
+import { useFloat } from '@/utils';
 
 export type Props = ImageProps & { align: 'left' | 'center' | 'right' };
 
@@ -13,18 +15,25 @@ export default function HoverImage({
   ...props
 }: Props) {
   const [loaded, setLoaded] = useState(false);
+  const image = useFloat<HTMLDivElement>(0);
 
   return (
-    <div
+    <motion.div
       className={cl('mb-20 flex', className)}
-      style={{ justifyContent: align, ...style }}
+      style={{
+        justifyContent: align,
+        y: image.y,
+        opacity: image.opacity,
+        ...style,
+      }}
+      ref={image.anchor}
     >
-      <div className="not-prose relative overflow-hidden rounded-md">
+      <div className="not-prose relative">
         <Image
           {...props}
           alt={alt}
           src={src}
-          className="relative z-[1]"
+          className="relative z-[1] rounded-md"
           onLoadingComplete={() => {
             setLoaded(true);
           }}
@@ -36,6 +45,6 @@ export default function HoverImage({
           />
         )}
       </div>
-    </div>
+    </motion.div>
   );
 }
