@@ -1,4 +1,4 @@
-import Button, { ButtonLink } from './Button';
+import { Button } from './Button';
 import Card from './Card';
 
-export { Button, Card, ButtonLink };
+export { Button, Card };

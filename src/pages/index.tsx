@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { useFloat, inViewProps, staggerProps } from '@/utils';
 import { Header, Footer, Container, CardGrid } from '@/components/layout';
 import { Text, Title, Grid, Autotext, Light } from '@/components/decorations';
-import { ButtonLink } from '@/components/controls';
+import { Button } from '@/components/controls';
 
 import MyPhoto from '@public/me.jpg';
 import Sphere from '@public/sphere.png';
@@ -118,13 +118,13 @@ export default function Home({ posts }: PageProps) {
               </div>
               <CardGrid className="mb-9" posts={posts} />
               <div className="text-center">
-                <ButtonLink
+                <Button
                   href="/work"
                   className="px-[75px] py-[18px]"
                   scroll={false}
                 >
                   More work
-                </ButtonLink>
+                </Button>
               </div>
             </Container>
           </div>

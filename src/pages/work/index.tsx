@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { motion } from 'framer-motion';
+
 import { CardGrid, Container, Footer, Header } from '@/components/layout';
 import { Light } from '@/components/decorations';
 

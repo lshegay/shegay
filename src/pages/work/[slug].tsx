@@ -1,14 +1,12 @@
-import { motion } from 'framer-motion';
-import cl from 'classnames';
 import {
   GetStaticPaths,
   GetStaticPropsContext,
   InferGetStaticPropsType,
 } from 'next';
 import Head from 'next/head';
-import Image from 'next/image';
 import { MDXRemote, MDXRemoteProps } from 'next-mdx-remote';
-import { Light, Text } from '@/components/decorations';
+
+import { Light } from '@/components/decorations';
 import { Container, Footer, Header } from '@/components/layout';
 import { getAllPosts, getPostBySlug } from '@/utils/ssg';
 import { Section, HoverImage } from '@/components/markdown';

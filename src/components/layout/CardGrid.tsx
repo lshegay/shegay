@@ -1,7 +1,8 @@
 import cl from 'classnames';
-import { Card } from '../controls';
 import type { DivProps } from 'react-html-props';
+
 import type { Post } from '@/utils/ssg';
+import { Card } from '../controls';
 
 export type Props = DivProps & { posts: Omit<Post, 'source'>[] };
 

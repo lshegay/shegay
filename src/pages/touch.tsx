@@ -6,7 +6,7 @@ import { FaArrowRight } from 'react-icons/fa';
 
 import { Light, Text, Title } from '@/components/decorations';
 import { Container, Footer, Header } from '@/components/layout';
-import { SOCIALS } from '@/components/layout/Footer';
+import settings from '@/settings';
 import { staggerProps, transition } from '@/utils';
 
 import mac from '@public/mac.png';
@@ -34,13 +34,13 @@ export default function Touch() {
               <motion.p className="text-lg" {...staggerProps.children}>
                 send me a message at
                 <Link
-                  href="mailto:lshegay@icloud.com"
+                  href={`mailto:${settings.email}`}
                   className="ml-2 rounded-lg py-2 px-3 text-xl font-bold
                     transition-colors ease-out
                   dark:hover:bg-neutral-800/50 dark:hover:text-white
                   dark:active:bg-transparent dark:active:text-neutral-600"
                 >
-                  lshegay@icloud.com
+                  {settings.email}
                 </Link>
               </motion.p>
             </motion.div>
@@ -50,7 +50,7 @@ export default function Touch() {
                 my fresh new developments.
               </Text>
               <div className="flex text-3xl">
-                {SOCIALS.map(({ icon, link }) => (
+                {settings.socials.map(({ icon, link }) => (
                   <Link
                     key={link}
                     href={link}

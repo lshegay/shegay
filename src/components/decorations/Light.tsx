@@ -1,4 +1,4 @@
-import { HTMLMotionProps, motion, MotionProps } from 'framer-motion';
+import { HTMLMotionProps, motion } from 'framer-motion';
 import cl from 'classnames';
 
 export type Props = HTMLMotionProps<'div'> & {

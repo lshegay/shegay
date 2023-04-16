@@ -1,4 +1,3 @@
-import cl from 'classnames';
 import type { DivProps } from 'react-html-props';
 
 export type Props = DivProps;

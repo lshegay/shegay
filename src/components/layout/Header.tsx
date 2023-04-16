@@ -2,20 +2,11 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import type { DivProps } from 'react-html-props';
 import cl from 'classnames';
+
+import settings from '@/settings';
 import Container from './Container';
 
 export type Props = DivProps;
-
-export const MENU = [
-  {
-    name: 'Work',
-    link: '/work',
-  },
-  {
-    name: 'Get in touch',
-    link: '/touch',
-  },
-];
 
 export default function Header({ children, className, ...props }: Props) {
   const router = useRouter();
@@ -38,7 +29,7 @@ export default function Header({ children, className, ...props }: Props) {
           SHEGAY
         </Link>
         <ul className="flex">
-          {MENU.map(({ name, link }) => (
+          {settings.headerMenu.map(({ name, link }) => (
             <li key={link} className="mr-2">
               <Link
                 className="rounded-lg p-2 text-sm font-bold

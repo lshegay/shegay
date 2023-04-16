@@ -12,5 +12,11 @@
   "tabWidth": 2,
   "trailingComma": "es5",
   "useTabs": false,
-  "parser": "typescript"
+  "parser": "typescript",
+  "overrides": [{
+    "files": ["works/*.mdx"],
+    "options": {
+      "parser": "mdx"
+    }
+  }]
 }

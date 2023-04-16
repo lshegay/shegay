@@ -2,20 +2,13 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import cl from 'classnames';
-import { FaBehance, FaGithub, FaVk, FaArrowRight } from 'react-icons/fa';
+import { FaArrowRight } from 'react-icons/fa';
 import type { DivProps } from 'react-html-props';
 
+import settings from '@/settings';
 import { staggerProps } from '@/utils';
 import Container from './Container';
 import { Light } from '../decorations';
-import { MENU } from './Header';
-
-export const FOOTER_MENU = [{ link: '/', name: 'Home' }, ...MENU];
-export const SOCIALS = [
-  { link: 'https://github.com/lshegay', icon: <FaGithub /> },
-  { link: 'https://www.behance.net/shegay', icon: <FaBehance /> },
-  { link: 'https://vk.com/korewashegay', icon: <FaVk /> },
-];
 
 export type Props = DivProps;
 
@@ -48,16 +41,16 @@ export default function Footer({ className, ...props }: Props) {
           </motion.h1>
           <p className="mb-3 text-neutral-300">Feel free to reach out!</p>
           <Link
-            href="mailto:lshegay@icloud.com"
+            href={`mailto:${settings.email}`}
             className="mb-8 -ml-2 inline-flex items-center rounded-xl p-2
             transition-colors dark:hover:bg-neutral-800/50
             dark:active:bg-transparent dark:active:text-neutral-600"
           >
-            <span className="mr-5 text-2xl font-bold">lshegay@icloud.com</span>
+            <span className="mr-5 text-2xl font-bold">{settings.email}</span>
             <FaArrowRight />
           </Link>
           <div className="flex text-3xl">
-            {SOCIALS.map(({ icon, link }) => (
+            {settings.socials.map(({ icon, link }) => (
               <Link
                 key={link}
                 href={link}
@@ -76,7 +69,7 @@ export default function Footer({ className, ...props }: Props) {
             <h2 className="mb-5 font-radwave text-xl">Menu</h2>
           </motion.div>
           <ul>
-            {FOOTER_MENU.map(({ link, name }) => (
+            {settings.footerMenu.map(({ link, name }) => (
               <motion.li key={link} className="mb-2" {...staggerProps.children}>
                 <Link
                   className="-ml-2 rounded-lg p-2 font-bold transition-colors

@@ -1,4 +1,3 @@
-import type { DivProps } from 'react-html-props';
 import { HTMLMotionProps, motion } from 'framer-motion';
 import cl from 'classnames';
 
