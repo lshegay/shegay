@@ -48,12 +48,12 @@ export default function Project({ post: { source, ...post } }: PageProps) {
       />
       <div className="h-full w-full dark:bg-black dark:text-white">
         <div
-          className="relative z-[1] flex h-full min-h-screen
+          className="relative flex h-full min-h-screen
           flex-col border-b-[1px] dark:border-y-neutral-900"
         >
-          <Header className="shrink-0" />
+          <Header className="relative z-[2] shrink-0" />
           <Container
-            className="prose prose-pink my-24 max-w-none
+            className="prose prose-pink relative z-[1] my-24 max-w-none
               dark:prose-invert prose-h4:mb-0
               prose-p:leading-8 prose-img:my-0"
           >
