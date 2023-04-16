@@ -12,8 +12,8 @@ export type Props = HTMLMotionProps<'div'> & {
 export default function Light({
   className,
   color = '#D321FF',
-  radius = 256,
-  opacity = 0.2,
+  radius = 300,
+  opacity = 0.15,
   blur = 170,
   ...props
 }: Props) {
@@ -22,10 +22,10 @@ export default function Light({
       {...props}
       className={cl('rounded-full', className)}
       style={{
-        filter: `blur(${blur}px)`,
         backgroundColor: color,
-        width: radius * 2,
-        height: radius * 2,
+        boxShadow: `0 0 ${blur * 2}px ${radius}px ${color}`,
+        width: 1,
+        height: 1,
         opacity,
         ...props.style,
       }}

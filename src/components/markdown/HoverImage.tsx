@@ -38,10 +38,14 @@ export default function HoverImage({
             setLoaded(true);
           }}
         />
-        {loaded && (
+        {!loaded && (
           <div
-            className="absolute top-0 left-0 z-0 h-full w-full
-          animate-pulse rounded-md border border-neutral-700 bg-[#2a1f2c]"
+            className="absolute top-0 left-0 z-0 max-w-full animate-pulse rounded-md
+            border border-neutral-700 bg-[#2a1f2c]"
+            style={{
+              width: props.width,
+              height: props.height,
+            }}
           />
         )}
       </div>

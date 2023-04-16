@@ -155,10 +155,10 @@ export default function Card({
         >
           <Light
             color={color}
-            className="mt-[-50px]"
-            blur={70}
+            className="mt-[-60px]"
+            blur={120}
             opacity={0.4}
-            radius={80}
+            radius={100}
           />
         </div>
       </Link>

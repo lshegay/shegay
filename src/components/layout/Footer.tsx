@@ -70,9 +70,9 @@ export default function Footer({ className, ...props }: Props) {
           </motion.div>
           <ul>
             {settings.footerMenu.map(({ link, name }) => (
-              <motion.li key={link} className="mb-2" {...staggerProps.children}>
+              <motion.li key={link} {...staggerProps.children}>
                 <Link
-                  className="-ml-2 rounded-lg p-2 font-bold transition-colors
+                  className="-ml-2 block rounded-lg p-2 font-bold transition-colors
                 ease-out dark:text-neutral-500 dark:hover:bg-neutral-800/50
                 dark:hover:text-white dark:active:bg-transparent
                 dark:active:text-neutral-600 md:-mr-2"
@@ -92,14 +92,15 @@ export default function Footer({ className, ...props }: Props) {
       <div className="absolute top-0 left-0 z-0 h-full w-full overflow-hidden">
         <Container className="relative h-full">
           <Light
-            className="absolute left-0 top-[-150px]"
+            className="absolute left-0 top-[150px]"
             color="rgb(173 85 255)"
-            radius={100}
+            opacity={0.05}
           />
           <Light
             color="rgb(255 0 0)"
-            className="absolute right-0 bottom-[20px]"
+            className="absolute right-0 bottom-[50px]"
             radius={200}
+            opacity={0.1}
           />
         </Container>
       </div>

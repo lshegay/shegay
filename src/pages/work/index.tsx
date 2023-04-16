@@ -32,8 +32,8 @@ export default function Work({ posts }: PageProps) {
         </div>
         <div className="absolute top-0 left-0 z-0 h-full w-full overflow-hidden">
           <Container className="relative h-full">
-            <Light className="absolute left-0 top-[10%]" />
-            <Light color="#FF2121" className="absolute right-0 top-1/3" />
+            <Light className="absolute left-[256px] top-[30%]" />
+            <Light color="#FF2121" className="absolute right-[256px] top-1/2" />
           </Container>
         </div>
         <Footer />
