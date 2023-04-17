@@ -51,7 +51,7 @@ export default function App({ Component, pageProps }: AppProps) {
           sizes="16x16"
           href="/favicons/favicon-16x16.png"
         />
-        <link rel="shortcut icon" href="/favicons/favicon.ico" />
+        <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="manifest" href="/favicons/site.webmanifest" />
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -59,6 +59,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <DefaultSeo
         title="Leonid Shegay — Versatile Software Developer"
         titleTemplate="%s — Leonid Shegay"
+        themeColor="#000000"
         description="Leonid Shegay is a versatile software engineer
         and full-stack web developer who is very passionate about IT!"
         openGraph={{

@@ -54,6 +54,7 @@ export default function Touch() {
                 {settings.socials.map(({ icon, link }) => (
                   <Link
                     key={link}
+                    target="_blank"
                     href={link}
                     className="mr-4 -ml-2 rounded-lg p-2 font-bold
                 transition-colors ease-out

@@ -160,7 +160,7 @@ export default function Home({ posts }: PageProps) {
                 <Text {...inViewProps()} className="leading-8">
                   As a child, I loved to play games and watch cartoons online. I
                   realized that web technology really made my childhood a little
-                  more fun! Now I understand the impact this has had on my life,
+                  more fun! Now I understand the impact this has had on my life.
                   <br />
                   <br />
                   I am now a full-stack web engineer, game and software
@@ -216,23 +216,25 @@ export default function Home({ posts }: PageProps) {
             </div>
             <Container className="flex w-full flex-col md:mb-24 md:flex-row">
               <div className="relative z-0 mb-10 flex w-full items-center justify-center md:mb-0">
-                <motion.div
-                  className="relative z-[2] mix-blend-plus-lighter"
-                  style={{
-                    x: sphere.x,
-                    y: sphere.y,
-                    opacity: sphere.opacity,
-                  }}
-                >
-                  <Image
-                    ref={sphere.anchor}
-                    src={Sphere}
-                    alt="Sphere"
-                    className="h-[288px]"
-                    draggable={false}
-                    placeholder="blur"
-                  />
-                </motion.div>
+                <div className="overflow-hidden">
+                  <motion.div
+                    className="relative z-[2] mix-blend-plus-lighter"
+                    style={{
+                      x: sphere.x,
+                      y: sphere.y,
+                      opacity: sphere.opacity,
+                    }}
+                  >
+                    <Image
+                      ref={sphere.anchor}
+                      src={Sphere}
+                      alt="Sphere"
+                      className="h-[288px]"
+                      draggable={false}
+                      placeholder="blur"
+                    />
+                  </motion.div>
+                </div>
                 <div className="absolute z-[1] flex h-full w-full items-center justify-center">
                   <Light
                     radius={100}
