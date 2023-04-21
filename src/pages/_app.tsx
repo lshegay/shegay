@@ -11,14 +11,10 @@ import { AnimatePresence } from 'framer-motion';
 import Layout from '@/components/layout/Layout';
 import '@/styles/globals.css';
 
-const inter = Inter({ subsets: ['cyrillic'], variable: '--font-inter' });
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const radwave = localFont({
   src: '../fonts/radwave.otf',
   variable: '--font-radwave',
-});
-const roadrage = localFont({
-  src: '../fonts/roadrage.otf',
-  variable: '--font-roadrage',
 });
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -81,7 +77,7 @@ export default function App({ Component, pageProps }: AppProps) {
       />
       <Script id="scrollRestoration">{`window.history.scrollRestoration = "manual"`}</Script>
       <main
-        className={`${radwave.variable} ${roadrage.variable} ${inter.variable}
+        className={`${radwave.variable} ${inter.variable}
         font-sans antialiased`}
       >
         <AnimatePresence

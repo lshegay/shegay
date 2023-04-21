@@ -9,7 +9,6 @@ module.exports = {
       fontFamily: {
         sans: ['var(--font-inter)', ...fontFamily.sans],
         radwave: ['var(--font-radwave)', ...fontFamily.sans],
-        roadrage: ['var(--font-roadrage)', ...fontFamily.sans],
       },
       transitionTimingFunction: {
         'in-expo': 'cubic-bezier(0.95, 0.05, 0.795, 0.035)',

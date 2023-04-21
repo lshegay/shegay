@@ -9,6 +9,7 @@ import { Text, Title, Grid, Autotext, Light } from '@/components/decorations';
 import { Button } from '@/components/controls';
 import { getAllPosts } from '@/utils/ssg';
 
+import Taste from '@public/taste.png';
 import MyPhoto from '@public/me.jpg';
 import Sphere from '@public/sphere.png';
 
@@ -33,7 +34,7 @@ export default function Home({ posts }: PageProps) {
             >
               <motion.h2
                 {...staggerProps.children}
-                className="font-radwave text-2xl  md:text-4xl"
+                className="font-radwave text-xl md:text-4xl"
               >
                 <span
                   className="bg-gradient-to-b from-[#6AFF79] to-[#00C2FF] 
@@ -48,13 +49,13 @@ export default function Home({ posts }: PageProps) {
                   this is a space of
                 </span>
               </motion.h2>
-              <motion.h1
+              <motion.div
                 {...staggerProps.children}
                 className="mb-2 bg-gradient-to-b from-[#FF75D8] via-[#FF75D8] to-[#FF00B8]
-              bg-clip-text font-roadrage text-6xl text-transparent md:text-7xl"
+              bg-clip-text text-6xl text-transparent md:text-7xl"
               >
-                Developer with taste
-              </motion.h1>
+                <Image src={Taste} alt="Developer with taste" priority></Image>
+              </motion.div>
               <Text
                 {...staggerProps.children}
                 className="md:w-[60%] md:text-xl"
@@ -187,6 +188,7 @@ export default function Home({ posts }: PageProps) {
                     className="w-screen rounded-xl md:mx-auto md:h-auto md:w-full md:max-w-[330px] md:rounded-full"
                     draggable={false}
                     placeholder="blur"
+                    quality={50}
                   />
                 </motion.div>
                 <div className="absolute z-[1] flex h-full w-full items-center justify-center">
