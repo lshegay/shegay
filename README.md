@@ -1,38 +1,48 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This project, [my personal website](https://www.shegay.su) is a basic demonstration of my skills. Tools used: Figma, VS Code.
 
-## Getting Started
+The main libraries and frameworks used:
+* NextJS
+* Tailwindcss
+* Framer Motion
+* Next MDX Remote
 
-First, run the development server:
+How I worked on the project:
+1. For a long time, I studied examples of portfolio sites. The main resources are awwwards.com, behance.com, dribbble.com and many third party sites.
+2. In my head I thought about the approximate content of the site, thought about the main color scheme and chose the theme of the site (in my case - a combination of minimalism and retrowave design)
+3. Drew the basic design, the skeleton and structure of the site in Figma.
+4. After the finished design I created the site. The choice of libraries was obvious, I chose the tools that I was closest to.
+
+## Demo on a local machine
+
+We need to install the libraries and start the development server:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+pnpm install
+pnpm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# Русский
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+Этот проект, [мой личный сайт](https://www.shegay.su) - базовая демонстрация моих умений. Использованные инструменты: Figma, VS Code.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Основные использованные библиотеки и фреймворки:
+* NextJS
+* Tailwindcss
+* Framer Motion
+* Next MDX Remote
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Как я работал над проектом:
+1. На протяжении долгого времени я изучал примеры сайтов-портфолио. Основные ресурсы: awwwards.com, behance.com, dribbble.com и много сторонних сайтов.
+2. В голове продумал примерное содержание сайта, продумал основную цветовую гамму и выбрал тематику сайта (в моем случае - это сочетание минимализма и retrowave оформления)
+3. Нарисовал основной дизайн, скелет и структуру сайта в Figma.
+4. После готового дизайна сверстал сайт. Выбор библиотек был очевиден, я выбрал те средства, которые мне сейчас наиболее близки.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Демонстрация на локальной машине
 
-## Learn More
+Нужно сделать установку библиотек и запустить сервер разработки:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+pnpm install
+pnpm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
