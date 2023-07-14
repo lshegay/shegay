@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import Image, { ImageProps } from 'next/image';
 import cl from 'classnames';
-import { useFloat } from '@/utils';
+import { useScrollFloat } from '@/utils';
 
 export type Props = ImageProps & { align: 'left' | 'center' | 'right' };
 
@@ -15,7 +15,7 @@ export default function HoverImage({
   ...props
 }: Props) {
   const [loaded, setLoaded] = useState(false);
-  const image = useFloat<HTMLDivElement>(0);
+  const image = useScrollFloat<HTMLDivElement>(0);
 
   return (
     <motion.div

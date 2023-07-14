@@ -124,7 +124,7 @@ export default function Card({
       ref={card}
       className={cl(
         `relative h-[345px] rounded-[20px]
-        overflow-hidden border-[1px] border-[#303030] text-left`,
+        overflow-hidden border-[1px] border-[#252525] text-left`,
         className
       )}
       variants={{
@@ -151,7 +151,7 @@ export default function Card({
         </div>
         <div
           className="absolute top-0 left-0 z-[-1] flex h-full
-        w-full justify-center overflow-hidden dark:bg-black"
+            w-full justify-center overflow-hidden dark:bg-[rgba(30,30,30,0.3)]"
         >
           <Light
             color={color}

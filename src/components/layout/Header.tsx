@@ -28,7 +28,7 @@ export default function Header({ children, className, ...props }: Props) {
         >
           SHEGAY
         </Link>
-        <ul className="flex">
+        <ul className="flex items-center">
           {settings.headerMenu.map(({ name, link }) => (
             <li key={link} className="mr-2">
               <Link
@@ -42,6 +42,21 @@ export default function Header({ children, className, ...props }: Props) {
                 }}
               >
                 {name}
+              </Link>
+            </li>
+          ))}
+          <li className="mr-2" />
+          {settings.socials.map(({ icon, link }) => (
+            <li key={link} className="mr-2 -ml-2">
+              <Link
+                target="_blank"
+                href={link}
+                className="block rounded-lg p-2 text-xl font-bold
+                transition-colors ease-out dark:text-neutral-500
+                dark:hover:bg-neutral-800/50 dark:hover:text-white
+                dark:active:bg-transparent dark:active:text-neutral-600"
+              >
+                {icon}
               </Link>
             </li>
           ))}

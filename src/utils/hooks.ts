@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { MotionValue, useScroll, useSpring, useTransform } from 'framer-motion';
 
-export function useFloat<T extends HTMLElement>(fromX = -50, fromY = 50) {
+export function useScrollFloat<T extends HTMLElement>(fromX = -50, fromY = 50) {
   const anchor = useRef<T>(null);
   const { scrollYProgress } = useScroll({
     target: anchor,

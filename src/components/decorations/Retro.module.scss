@@ -1,4 +1,4 @@
-@keyframes retro-move {
+@keyframes retroMove {
   0% {
     background-position: -1px -1px, -1px -1px;
   }
@@ -8,18 +8,17 @@
 }
 
 .grid {
-  perspective: 200px;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-image: -webkit-linear-gradient(
+    top, white 4px, transparent 2px),
+    -webkit-linear-gradient(left, white 4px,
+    transparent 2px
+  );
+  background-size: 50px 50px, 60px 80px;
+  background-position: -1px -1px, -1px -1px;
   perspective-origin: 50% 40%;
-
-  &::after {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 100%;
-    background-image: -webkit-linear-gradient(top, white 4px, transparent 2px), -webkit-linear-gradient(left, white 4px, transparent 2px);
-    background-size: 50px 50px, 60px 80px;
-    background-position: -1px -1px, -1px -1px;
-    transform: rotateX(60deg);
-    animation: retro-move 1s infinite linear;
-  }
+  transform: perspective(200px) rotateX(60deg);
+  animation: retroMove 1s infinite linear;
 }
