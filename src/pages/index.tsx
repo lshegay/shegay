@@ -203,9 +203,9 @@ export default function Home({ posts }: PageProps) {
                   />
                 </motion.div>
                 <Text {...staggerProps.children} className="leading-8">
-                  Now I work in Rhonda Software as full-stack web developer. I
-                  also do my own projects and take a part in different
-                  programming championships. I write about coding and web.
+                  Now I work in Messaggio as frontend web developer. I also do
+                  my own projects and take a part in different programming
+                  championships. I write about coding and web.
                 </Text>
                 <br />
                 <Text {...staggerProps.children} className="leading-8">
@@ -259,8 +259,14 @@ export default function Home({ posts }: PageProps) {
                 className="grid gap-x-8 gap-y-12 sm:grid-cols-2 md:grid-cols-3"
               >
                 <motion.div {...staggerProps.children}>
+                  <p>Frontend developer</p>
+                  <p className="mb-2 text-sm">2023-current</p>
+                  <p className="font-bold">Messaggio</p>
+                  <p>Highload Multichannel Messaging Platform</p>
+                </motion.div>
+                <motion.div {...staggerProps.children}>
                   <p>Full-stack developer</p>
-                  <p className="mb-2 text-sm">2022-current</p>
+                  <p className="mb-2 text-sm">2022-2023</p>
                   <p className="font-bold">Rhonda Software</p>
                   <p>Business SPA development</p>
                 </motion.div>
