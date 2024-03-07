@@ -55,12 +55,14 @@ export async function getAllPosts(limit?: number, order: string[] = []) {
         return post;
       })
     )
-  ).sort((post1, post2) => {
-    if (order.length > 0)
-      return order.indexOf(post1.slug) - order.indexOf(post2.slug);
+  )
+    .filter(({ slug }) => !order.length || order.includes(slug))
+    .sort((post1, post2) => {
+      if (order.length > 0)
+        return order.indexOf(post1.slug) - order.indexOf(post2.slug);
 
-    return new Date(post1.date) > new Date(post2.date) ? -1 : 1;
-  });
+      return new Date(post1.date) > new Date(post2.date) ? -1 : 1;
+    });
 
   if (limit) {
     return posts.slice(0, limit);

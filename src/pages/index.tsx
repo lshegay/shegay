@@ -321,8 +321,8 @@ export default function Home({ posts }: PageProps) {
 
 export async function getStaticProps() {
   const posts = await getAllPosts(4, [
-    'cyberpunkctf',
-    'daisukicms',
+    'cyberpunk',
+    'developer_feedback',
     'fareastctf',
     'cube2022',
   ]);
