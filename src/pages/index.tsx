@@ -203,6 +203,13 @@ export default function Home({ posts }: PageProps) {
                   />
                 </motion.div>
                 <Text {...staggerProps.children} className="leading-8">
+                  I previously worked at Rhonda Software as a fullstack
+                  developer (Django + Vue) on a business analytics platform. I
+                  migrated the whole frontend from Vue 2 to Vue 3 using the new
+                  Composition API.
+                </Text>
+                <br />
+                <Text {...staggerProps.children} className="leading-8">
                   Now I work in Messaggio as frontend web developer. I also do
                   my own projects and take a part in different programming
                   championships. I write about coding and web.
@@ -215,10 +222,8 @@ export default function Home({ posts }: PageProps) {
                 </Text>
                 <br />
                 <Text {...staggerProps.children} className="leading-8">
-                  I&apos;m studying in Pacific National University, Khabarovsk
-                  to become a cybersecurity specialist, but I already have some
-                  achievements in this area. I want to create beautiful and
-                  stylish, but still useful projects!
+                  I am a cybersecurity specialist who graduated from Pacific
+                  National University in 2024.
                 </Text>
               </motion.div>
               <div className="absolute z-[-1] flex h-full w-full items-center justify-center">
@@ -290,7 +295,7 @@ export default function Home({ posts }: PageProps) {
                 </motion.div>
                 <motion.div {...staggerProps.children}>
                   <p>Cybersecurity specialist</p>
-                  <p className="mb-2 text-sm">2018-current</p>
+                  <p className="mb-2 text-sm">2018-2024</p>
                   <p className="font-bold">Pacific Nation University</p>
                   <p>Khabarovsk, student</p>
                 </motion.div>
