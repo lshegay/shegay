@@ -95,13 +95,13 @@ export default function Footer({ className, ...props }: Props) {
           <Light
             className="absolute left-0 top-[150px]"
             color="rgb(173 85 255)"
-            opacity={0.05}
+            opacity={0.1}
           />
           <Light
             color="rgb(255 0 0)"
             className="absolute right-0 bottom-[50px]"
             radius={200}
-            opacity={0.1}
+            opacity={0.15}
           />
         </Container>
       </div>

@@ -7,7 +7,7 @@ export default function Container({ children, className, ...props }: Props) {
   return (
     <motion.div
       {...props}
-      className={cl('lg:w-[1120px] lg:mx-auto px-5', className)}
+      className={cl('lg:w-[1120px] lg:mx-auto px-5 box-border', className)}
     >
       {children}
     </motion.div>

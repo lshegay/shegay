@@ -10,7 +10,7 @@ import { Button } from '@/components/controls';
 import { getAllPosts } from '@/utils/ssg';
 
 import Taste from '@public/taste.png';
-import MyPhoto from '@public/me.jpg';
+import MyPhoto from '@public/me2.jpg';
 
 type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -69,25 +69,27 @@ export default function Home({ posts }: PageProps) {
               </div>
             </Container>
             <div
-              className="relative flex h-[200px] w-full
-                overflow-hidden border-y-[1px] border-y-neutral-200 bg-black
-                dark:border-y-neutral-900 md:h-[111px]"
+              className="relative flex min-h-[140px]
+                w-full overflow-hidden border-y-[1px] border-y-neutral-200
+                bg-black dark:border-y-neutral-900 md:min-h-[111px]"
             >
               <Container
-                className="flex w-full flex-col items-center
-                 justify-between py-7 text-center md:flex-row md:py-0 md:text-left"
+                className="flex w-full flex-col justify-center
+                 text-center md:flex-row md:items-center md:justify-between md:text-left"
               >
-                <Text className="font-radwave text-3xl">STATUS</Text>
-                <Text className="uppercase">
+                <Text className="font-radwave text-3xl md:mr-10">STATUS</Text>
+                <Text className="text-sm uppercase md:text-base">
                   Currently based in Russia, Khabarovsk • Working as full-stack
                   engineer • Making web applications
                 </Text>
               </Container>
-              <Light
-                color="#632CFF"
-                className="absolute right-[128px] top-1/2"
-                opacity={0.1}
-              />
+              <div className="absolute z-[-1] h-full w-full overflow-hidden">
+                <Light
+                  color="#632CFF"
+                  className="absolute right-[128px] top-1/2"
+                  opacity={0.1}
+                />
+              </div>
             </div>
           </div>
           <div className="absolute top-0 left-0 h-full w-full overflow-hidden">
@@ -118,16 +120,6 @@ export default function Home({ posts }: PageProps) {
                 functional apps. Here you can see all my recent projects I’m
                 really proud of!
               </Text>
-              <div className="absolute z-[-1] flex h-full w-full items-center justify-center">
-                <Light
-                  radius={100}
-                  color="#FF61AB"
-                  opacity={0.4}
-                  blur={100}
-                  className="-ml-12 mr-64"
-                />
-                <Light radius={100} color="#a42b9a" opacity={0.4} blur={100} />
-              </div>
             </div>
             <CardGrid className="mb-9" posts={posts} />
             <div className="text-center">
@@ -142,6 +134,20 @@ export default function Home({ posts }: PageProps) {
           </Container>
           <div className="absolute top-0 left-0 h-full w-full overflow-hidden">
             <Container className="relative h-full">
+              <Light
+                radius={100}
+                color="#FF61AB"
+                opacity={0.4}
+                blur={100}
+                className="-ml-12 mr-64"
+              />
+              <Light
+                radius={100}
+                color="#a42b9a"
+                opacity={0.4}
+                blur={100}
+                className="absolute left-1/2 top-1/2"
+              />
               <Light
                 color="#FF61AB"
                 className="absolute left-0 bottom-[200px]"
@@ -226,16 +232,6 @@ export default function Home({ posts }: PageProps) {
                   National University in 2024.
                 </Text>
               </motion.div>
-              <div className="absolute z-[-1] flex h-full w-full items-center justify-center">
-                <Light
-                  radius={100}
-                  color="#FF61AB"
-                  opacity={0.4}
-                  blur={100}
-                  className="-ml-12 mr-64"
-                />
-                <Light radius={100} color="#6DC0D5" opacity={0.4} blur={100} />
-              </div>
             </Container>
             <div className="mb-24 flex w-full flex-col">
               <Autotext text="next.js react vue framer-motion typescript&nbsp;" />
@@ -249,16 +245,7 @@ export default function Home({ posts }: PageProps) {
               <Title {...inViewProps()} className="mb-10">
                 Achievements
               </Title>
-              <div className="absolute z-[-1] flex h-full w-full items-center justify-center">
-                <Light
-                  radius={100}
-                  color="#F15D5D"
-                  opacity={0.4}
-                  blur={100}
-                  className="-ml-12 mr-64"
-                />
-                <Light radius={100} color="#F329F8" opacity={0.4} blur={100} />
-              </div>
+
               <motion.div
                 {...staggerProps.parent}
                 className="grid gap-x-8 gap-y-12 sm:grid-cols-2 md:grid-cols-3"
@@ -304,6 +291,35 @@ export default function Home({ posts }: PageProps) {
           </div>
           <div className="absolute top-0 left-0 h-full w-full overflow-hidden">
             <Container className="relative h-full">
+              <Light
+                radius={100}
+                color="#FF61AB"
+                opacity={0.4}
+                blur={100}
+                className="absolute top-[750px] left-1/2 ml-[100px] mb-[25%]"
+              />
+
+              <Light
+                radius={100}
+                color="#6DC0D5"
+                opacity={0.4}
+                blur={100}
+                className="absolute top-[750px] right-1/2  mr-[100px] mb-[25%]"
+              />
+              <Light
+                radius={100}
+                color="#F15D5D"
+                opacity={0.4}
+                blur={100}
+                className="absolute bottom-[25%] left-1/2 ml-[100px]"
+              />
+              <Light
+                radius={100}
+                color="#F329F8"
+                opacity={0.4}
+                blur={100}
+                className="absolute bottom-[25%] right-1/2  mr-[100px]"
+              />
               <Light className="absolute left-0 top-[150px]" opacity={0.1} />
               <Light
                 color="rgb(0 62 255)"
