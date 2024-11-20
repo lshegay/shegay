@@ -21,7 +21,7 @@ export default function CardGrid({ className, posts, ...props }: Props) {
           key={post.slug}
           {...post}
           link={post.redirect ?? `/work/${post.slug}`}
-          target={post.redirect && '_blank'}
+          target={post.redirect ? '_blank' : undefined}
           images={post.thumbnails}
           className={cl({ wide: post.wide })}
         />
