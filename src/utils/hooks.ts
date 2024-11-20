@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { MotionValue, useScroll, useSpring, useTransform } from 'framer-motion';
+import { type MotionValue, useScroll, useSpring, useTransform } from 'framer-motion';
 
 export function useScrollFloat<T extends HTMLElement>(fromX = -50, fromY = 50) {
   const anchor = useRef<T>(null);

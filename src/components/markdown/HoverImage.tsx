@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import Image, { ImageProps } from 'next/image';
+import Image, { type ImageProps } from 'next/image';
 import cl from 'classnames';
 import { useScrollFloat } from '@/utils';
 
@@ -28,24 +28,26 @@ export default function HoverImage({
       }}
       ref={image.anchor}
     >
-      <div className="not-prose relative">
+      <div
+        className="not-prose relative box-border"
+        style={{
+          width: props.width,
+          aspectRatio: `${props.width} / ${props.height}`,
+        }}
+      >
         <Image
           {...props}
           alt={alt}
           src={src}
-          className="relative z-[1] rounded-md"
-          onLoadingComplete={() => {
+          className="absolute top-0 left-0 z-[1] rounded-md"
+          onLoad={() => {
             setLoaded(true);
           }}
         />
         {!loaded && (
           <div
-            className="absolute top-0 left-0 z-0 max-w-full animate-pulse rounded-md
+            className="absolute top-0 left-0 z-0 w-full h-full animate-pulse rounded-md
             border border-neutral-700 bg-[#2a1f2c]"
-            style={{
-              width: props.width,
-              height: props.height,
-            }}
           />
         )}
       </div>

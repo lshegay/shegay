@@ -1,4 +1,4 @@
-import { InferGetStaticPropsType } from 'next';
+import type { InferGetStaticPropsType } from 'next';
 import Image from 'next/image';
 import { NextSeo } from 'next-seo';
 import { motion } from 'framer-motion';

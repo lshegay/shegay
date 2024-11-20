@@ -55,7 +55,7 @@ export default function Card({
         window.removeEventListener('resize', listener);
       }
     };
-  }, [card]);
+  }, []);
 
   const imgElements = useMemo(() => {
     const contentWidth = lagWidth - 44 * 2 - 2;
@@ -105,7 +105,7 @@ export default function Card({
                   borderBottomRightRadius: length == 1 ? '0.5rem' : undefined,
                 }}
                 draggable={false}
-                onLoadingComplete={(d) => {
+                onLoad={(d) => {
                   setLoaded((v) => ({ ...v, [img.src]: true }));
                 }}
               />

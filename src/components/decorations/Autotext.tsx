@@ -24,7 +24,7 @@ export default function Autotext({
         transition={{
           ease: 'linear',
           duration,
-          repeat: Infinity,
+          repeat: Number.POSITIVE_INFINITY,
         }}
       >
         {text}
@@ -36,7 +36,7 @@ export default function Autotext({
         transition={{
           ease: 'linear',
           duration,
-          repeat: Infinity,
+          repeat: Number.POSITIVE_INFINITY,
         }}
       >
         {text}
@@ -48,7 +48,7 @@ export default function Autotext({
         transition={{
           ease: 'linear',
           duration,
-          repeat: Infinity,
+          repeat: Number.POSITIVE_INFINITY,
         }}
       >
         {text}

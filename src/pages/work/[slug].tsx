@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import {
+import type {
   GetStaticPaths,
   GetStaticPropsContext,
   InferGetStaticPropsType,
 } from 'next';
 import { NextSeo } from 'next-seo';
-import { MDXRemote, MDXRemoteProps } from 'next-mdx-remote';
+import { MDXRemote, type MDXRemoteProps } from 'next-mdx-remote';
 
 import { Light } from '@/components/decorations';
 import { Container, Footer, Header } from '@/components/layout';
@@ -63,6 +63,7 @@ export default function Project({ post: { source, ...post } }: PageProps) {
             <Container className="relative h-full">
               {new Array(N).fill(0).map((_, index) => (
                 <Light
+                  // biome-ignore lint/suspicious/noArrayIndexKey: generated, uniqie id not needed
                   key={index}
                   className="absolute"
                   color={colors[index % colors.length]}
