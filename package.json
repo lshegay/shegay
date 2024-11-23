@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "classnames": "2.5.1",
-    "framer-motion": "11.11.17",
+    "es-toolkit": "^1.27.0",
+    "motion": "^11.11.17",
     "next": "15.0.3",
     "next-mdx-remote": "^4.4.1",
     "next-seo": "^6.6.0",

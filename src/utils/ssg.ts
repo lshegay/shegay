@@ -62,7 +62,10 @@ export async function getPostBySlug(slug: string): Promise<Post> {
   return { ...serializedData, source };
 }
 
-export async function getAllPosts(limit?: number, order: string[] = []) {
+export async function getAllPosts(
+  limit?: number,
+  order: string[] = [],
+): Promise<Omit<Post, 'source'>[]> {
   const slugs = fs.readdirSync(postsDirectory);
   const posts = (
     await Promise.all(
@@ -76,7 +79,7 @@ export async function getAllPosts(limit?: number, order: string[] = []) {
     .sort((post1, post2) => {
       if (order.length > 0) return order.indexOf(post1.slug) - order.indexOf(post2.slug);
 
-      return new Date(post1.date) > new Date(post2.date) ? -1 : 1;
+      return new Date(post1.date) < new Date(post2.date) ? -1 : 1;
     });
 
   if (limit) {

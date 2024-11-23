@@ -40,7 +40,7 @@ export function inViewStaggerProps() {
           y: 0,
           transition: {
             type: 'spring',
-            damping: 20,
+            damping: 50,
           },
         },
       },
