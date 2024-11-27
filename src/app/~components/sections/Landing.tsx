@@ -12,6 +12,7 @@ import Dispersion from '@public/dispersion-03.jpg';
 
 import { LandingBackground } from './LandingBackground';
 import Card from '@/components/ui/Card';
+import { debounce } from 'es-toolkit';
 
 export type LandingProps = {
   posts: Omit<Post, 'source'>[];
@@ -64,85 +65,103 @@ export default function Landing(props: LandingProps) {
         style={{
           backgroundImage: `linear-gradient(to bottom, ${btn.from}, ${btn.to})`,
         }}
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
+        initial={{ y: -100, scale: 0.9 }}
+        animate={{ y: 0, scale: 1 }}
         whileHover={{ y: -10 }}
-        exit={{ y: 100 }}
-        transition={{ type: 'spring', mass: 0.5, stiffness: 100, damping: 5 }}
+        exit={{ y: 100, scale: 0.9 }}
+        transition={{ type: 'spring', mass: 0.5, stiffness: 100, damping: 10 }}
       >
         {btn.label}
       </motion.div>
     );
   }, [label]);
 
-  const buttonElements = useMemo(
-    () =>
-      Object.keys(buttons)
-        .filter((id) => buttons[id as keyof typeof buttons].href)
-        .map((id) => {
-          const btn = buttons[id as keyof typeof buttons];
-          let hovered = false;
+  const buttonElements = useMemo(() => {
+    const setDefault = debounce(() => {
+      setLabel('default');
+      setLabelKey((v) => v + 1);
+    }, 200);
 
-          return (
-            <motion.div
-              key={id}
-              variants={{
-                hidden: { opacity: 0, y: -50 },
-                show: {
-                  opacity: 1,
-                  y: 0,
-                  transition: { type: 'spring', damping: 50 },
-                },
+    return Object.keys(buttons)
+      .filter((id) => buttons[id as keyof typeof buttons].href)
+      .map((id) => {
+        const btn = buttons[id as keyof typeof buttons];
+        let hovered = false;
+
+        return (
+          <motion.div
+            key={id}
+            variants={{
+              hidden: { opacity: 0, y: -50 },
+              show: {
+                opacity: 1,
+                y: 0,
+                transition: { type: 'spring', damping: 50 },
+              },
+            }}
+            className="relative flex-grow mb-2 mr-2"
+          >
+            <Card
+              href={btn.href}
+              className="!px-5 justify-center"
+              onMouseEnter={() => {
+                setDefault.cancel();
+
+                setLabel(id as keyof typeof buttons);
+                setLabelKey((v) => v + 1);
+
+                hovered = true;
               }}
-              className="relative mb-2 md:mr-2"
+              onMouseLeave={() => {
+                setDefault();
+
+                hovered = false;
+              }}
+              onTouchStart={() => {
+                if (hovered) return;
+
+                setDefault.cancel();
+
+                setLabel(id as keyof typeof buttons);
+                setLabelKey((v) => v + 1);
+              }}
+              onTouchEnd={() => {
+                setDefault();
+
+                hovered = false;
+              }}
+              onFocus={() => {
+                if (hovered) return;
+
+                setDefault.cancel();
+
+                setLabel(id as keyof typeof buttons);
+                setLabelKey((v) => v + 1);
+              }}
+              onBlur={() => {
+                if (hovered) return;
+
+                setDefault();
+              }}
             >
-              <Card
-                href={btn.href}
-                className="!px-5"
-                onMouseEnter={() => {
-                  setLabel(id as keyof typeof buttons);
-                  setLabelKey((v) => v + 1);
-
-                  hovered = true;
-                }}
-                onMouseLeave={() => {
-                  setLabel('default');
-                  setLabelKey((v) => v + 1);
-
-                  hovered = false;
-                }}
-                onFocus={() => {
-                  if (hovered) return;
-
-                  setLabel(id as keyof typeof buttons);
-                  setLabelKey((v) => v + 1);
-                }}
-                onBlur={() => {
-                  if (hovered) return;
-
-                  setLabel('default');
-                  setLabelKey((v) => v + 1);
-                }}
+              <div
+                className="rounded-full p-2 w-10 h-10"
+                style={{ border: `2px solid ${btn.from}` }}
               >
-                <div
-                  className="rounded-full p-2 w-10 h-10"
-                  style={{ border: `2px solid ${btn.from}` }}
-                >
-                  <motion.div
-                    className="p-2 w-full h-full rounded-full"
-                    style={{ background: btn.from }}
-                    variants={{
-                      initial: { opacity: 0.6 },
-                      hovered: { opacity: 1 },
-                    }}
-                  />
-                </div>
-              </Card>
-            </motion.div>
-          );
-        }),
-    [],
-  );
+                <motion.div
+                  className="p-2 w-full h-full rounded-full"
+                  style={{ background: btn.from }}
+                  variants={{
+                    initial: { opacity: 0.6 },
+                    hovered: { opacity: 1 },
+                  }}
+                />
+              </div>
+            </Card>
+          </motion.div>
+        );
+      });
+  }, []);
 
   return (
     <section className="relative h-full">
@@ -200,8 +219,8 @@ export default function Landing(props: LandingProps) {
             }}
             className="relative flex-grow mb-2 md:mr-2 h-full"
           >
-            <Card href={post?.redirect || `/works/${post?.slug}`}>
-              <Text className="font-bold text-sm uppercase md:text-3xl">Latest work</Text>
+            <Card href={post?.redirect || `/works/${post?.slug}`} className="justify-between">
+              <Text className="font-bold uppercase md:text-3xl">Latest work</Text>
               <div className="flex items-end">
                 <div className="border-2 border-yellow-500 rounded-full p-2 w-10 h-10">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#eab308">
@@ -223,12 +242,12 @@ export default function Landing(props: LandingProps) {
               </motion.div>
             </Card>
           </motion.div>
-          {buttonElements}
+          <div className="flex md:flex-row">{buttonElements}</div>
         </div>
       </motion.div>
 
       {/* Background */}
-      <LandingBackground />
+      <LandingBackground state={label} />
     </section>
   );
 }

@@ -34,7 +34,7 @@ export default function Autotext(p: Props) {
   return (
     <div
       className="relative flex w-full overflow-hidden
-        font-radwave text-7xl text-white/30 xl:text-9xl !leading-[0.7]"
+        font-radwave text-7xl text-white/30 xl:text-9xl !leading-[0.8]"
     >
       {autoTextPositions[direction].map(([from, to], index) => (
         <motion.div

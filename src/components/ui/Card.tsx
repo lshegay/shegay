@@ -19,7 +19,7 @@ export default function Card(p: CardProps) {
     <motion.a
       {...props}
       className={classNames(
-        `flex justify-between items-center
+        `flex items-center
           relative w-full
           rounded-[20px] px-7 py-5
           overflow-hidden border-[1px] border-[#252525] backdrop-blur-sm`,

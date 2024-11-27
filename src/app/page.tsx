@@ -1,11 +1,9 @@
 // TODO: next-seo
 
-import Header from './components/Header';
+import Header from './~components/Header';
+import Landing from './~components/sections/Landing';
 
 import { getAllPosts } from '@/utils/ssg';
-
-import MyPhoto from '@public/me2.jpg';
-import Landing from './components/sections/Landing';
 
 export default async function Home() {
   const posts = await getAllPosts();
@@ -17,12 +15,11 @@ export default async function Home() {
         <Header />
         <Landing posts={posts} />
         {/* Works */}
-        
+
         {/* About me */}
-        
+
         {/* <Footer /> */}
       </div>
     </>
   );
 }
-
