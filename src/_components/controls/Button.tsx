@@ -1,11 +1,12 @@
 import Link from 'next/link';
-import cl from 'classnames';
+import type { ComponentProps } from 'react';
 import type { ButtonProps } from 'react-html-props';
+import cl from 'classnames';
 import Light from '../decorations/Light';
 
 export type CustomButtonProps = ButtonProps;
 
-export type ButtonLinkProps = React.ComponentProps<typeof Link> & {
+export type ButtonLinkProps = ComponentProps<typeof Link> & {
   from?: string;
   to?: string;
   light?: string;
@@ -33,7 +34,7 @@ export function Button({
       className={cl(
         `group relative z-0 inline-block overflow-hidden
         rounded-[20px] font-bold text-center`,
-        className
+        className,
       )}
     >
       {children}

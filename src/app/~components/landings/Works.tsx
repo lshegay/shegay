@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { randomInt } from 'es-toolkit';
 import { AnimatePresence, motion } from 'motion/react';
 import Image from 'next/image';
@@ -9,8 +10,8 @@ const previews = [
     id: 'developer feedback preview',
   },
   {
-    src: '/developer_feedback/grid_preview.jpg',
-    id: 'grid preview',
+    src: '/examples/shegay.png',
+    id: 'shegay.su ver1',
   },
   {
     src: '/examples/cyberpunkctf_preview.jpg',
@@ -83,14 +84,17 @@ export function TVScreen(p: TVScreenProps) {
 
   return (
     <motion.div
-      className="relative aspect-video w-full bg-neutral-800 overflow-hidden rounded-lg
-        p-1"
+      className={classNames(
+        `relative aspect-[4/3] w-full bg-neutral-900 overflow-hidden rounded-lg
+        p-1`,
+        { 'col-span-2 row-span-2': (p.index) % 10 == 0 },
+      )}
     >
       <div className="relative w-full h-full overflow-hidden rounded-lg">
         <div
           className="absolute top-0 left-0 w-full h-full z-10"
           style={{
-            background: 'radial-gradient(transparent, rgba(0,0,0,0.2))',
+            background: 'radial-gradient(transparent 70%, rgba(0,0,0,0.4))',
           }}
         />
         <AnimatePresence>
@@ -111,8 +115,8 @@ export function TVScreen(p: TVScreenProps) {
   );
 }
 
-export default function TVs(p: Props) {
-  const { staggerDelay = 50, updateDelay = 1000, screenCount = 48 } = p;
+export default function Works(p: Props) {
+  const { staggerDelay = 50, updateDelay = 1000, screenCount = 15 } = p;
 
   const screens = useMemo(() => {
     return new Array(screenCount).fill(0).map((_, index) => {
@@ -131,7 +135,7 @@ export default function TVs(p: Props) {
   }, [staggerDelay, updateDelay, screenCount]);
 
   return (
-    <div className="absolute top-0 left-0 w-full h-full grid grid-cols-4 auto-rows-max gap-2 blur-[2px]">
+    <div className="absolute top-0 left-0 w-full h-full grid grid-cols-3 md:grid-cols-5 auto-rows-max grid-flow-dense gap-2 blur-sm">
       {screens}
     </div>
   );

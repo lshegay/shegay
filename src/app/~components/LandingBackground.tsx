@@ -2,17 +2,13 @@
 
 import { useEffect, useMemo, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import Sphere from './Sphere';
-import Text from './Text';
-import TVs from './TVs';
+import { Contact, Default, Works, About } from './landings';
 
 type Props = {
   state: 'default' | 'works' | 'about' | 'contact';
 };
 
-export function LandingBackground(p: Props) {
-  const { state = 'default' } = p;
-
+export function LandingBackground({ state = 'default' }: Props) {
   const canvas = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -59,15 +55,17 @@ export function LandingBackground(p: Props) {
   const landingElement = useMemo(() => {
     switch (state) {
       case 'default': {
-        return <Text />;
+        return <Default />;
       }
       case 'works': {
-        return <TVs />;
+        return <Works />;
+      }
+      case 'about': {
+        return <About />;
       }
       case 'contact': {
-        return <Sphere />;
+        return <Contact />;
       }
-
       default:
         break;
     }
@@ -75,10 +73,10 @@ export function LandingBackground(p: Props) {
 
   return (
     <div className="absolute top-0 left-0 h-full z-0 w-full overflow-hidden">
-      <AnimatePresence mode="popLayout">
+      <AnimatePresence mode="wait">
         <motion.div
           className="overflow-hidden w-full h-full"
-          key={p.state}
+          key={state}
           initial={{ scale: 0.7, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.7, opacity: 0 }}

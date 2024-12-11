@@ -1,7 +1,7 @@
 // TODO: next-seo
 
 import Header from './~components/Header';
-import Landing from './~components/sections/Landing';
+import Landing from './~components/Landing';
 
 import { getAllPosts } from '@/utils/ssg';
 
@@ -11,14 +11,8 @@ export default async function Home() {
   return (
     <>
       <div className="h-screen w-full bg-black text-white">
-        {/* Landscape */}
         <Header />
         <Landing posts={posts} />
-        {/* Works */}
-
-        {/* About me */}
-
-        {/* <Footer /> */}
       </div>
     </>
   );

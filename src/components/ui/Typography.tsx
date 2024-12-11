@@ -1,3 +1,5 @@
+'use client'
+
 import { type HTMLMotionProps, motion } from 'motion/react';
 import cl from 'classnames';
 
@@ -23,7 +25,7 @@ export function Title({ children, className, ...props }: H1Props) {
     <motion.h1
       {...props}
       className={cl(
-        'font-radwave text-2xl bg-gradient-to-b from-[#ff9662] to-[#FF50B9] bg-clip-text text-transparent',
+        'font-radwave bg-gradient-to-b from-[#ff9662] to-[#FF50B9] bg-clip-text text-transparent',
         className
       )}
     >

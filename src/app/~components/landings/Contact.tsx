@@ -1,18 +1,16 @@
 import { motion } from 'motion/react';
 import classNames from 'classnames';
 
-import SphereStyles from './Sphere.module.css';
+import ContactStyles from './Contact.module.css';
 import Autotext from '@/components/animations/Autotext';
 
-const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
-
-export default function Sphere() {
+export default function Contact() {
   return (
     <>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[1]">
+      {/* <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[1]">
         <motion.div
-          initial={{ rotate: '0deg', scale: 1 }}
-          animate={{ rotate: '360deg', scale: [1.2, 1] }}
+          initial={{ rotate: 0, scale: 1 }}
+          animate={{ rotate: -360, scale: 1.2 }}
           transition={{
             type: 'spring',
             stiffness: 20,
@@ -34,8 +32,8 @@ export default function Sphere() {
       </div>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[1]">
         <motion.div
-          initial={{ rotate: '15deg', scale: 1 }}
-          animate={{ rotate: '375deg', scale: [0.7, 1] }}
+          initial={{ rotate: 15, scale: 1 }}
+          animate={{ rotate: 375, scale: 0.7 }}
           transition={{
             type: 'spring',
             stiffness: 20,
@@ -54,7 +52,7 @@ export default function Sphere() {
             />
           </svg>
         </motion.div>
-      </div>
+      </div> */}
       <div
         className="absolute z-[1] top-32 h-32 w-full bg-[#ef4444]
           flex justify-between items-center
@@ -72,7 +70,7 @@ export default function Sphere() {
         <Autotext text="SHEGAY SHEGAY&nbsp;" duration={5} direction="right" />
       </div>
       <motion.div
-        className={classNames(SphereStyles.blueprint, 'z-[-10]')}
+        className={classNames(ContactStyles.blueprint, 'z-[-10]')}
         initial={{ scale: 1 }}
         animate={{ scale: 2 }}
         transition={{
@@ -82,27 +80,33 @@ export default function Sphere() {
           delay: 1,
         }}
       />
-      <div className={classNames(SphereStyles.scene, 'z-[1]')}>
-        <div className={SphereStyles.clip}>
-          <div className={SphereStyles.container}>
-            <div className={classNames(SphereStyles.circle, SphereStyles.border)} />
-            <div className={classNames(SphereStyles.circle, SphereStyles.border)} />
-            <div className={classNames(SphereStyles.circle, SphereStyles.border)} />
-            <div className={classNames(SphereStyles.circle, SphereStyles.border)} />
-            <div className={classNames(SphereStyles.circle, SphereStyles.border)} />
-            <div className={classNames(SphereStyles.circle, SphereStyles.border)} />
-            <div className={classNames(SphereStyles.circle, SphereStyles.border)} />
-            <div className={classNames(SphereStyles.circle, SphereStyles.border)} />
-            <div className={classNames(SphereStyles.circle, SphereStyles.border)} />
-            <div className={classNames(SphereStyles.circle, SphereStyles.border)} />
-            <div className={SphereStyles.circle} />
-            <div className={SphereStyles.circle} />
-            <div className={SphereStyles.circle} />
-            <div className={SphereStyles.circle} />
-            <div className={SphereStyles.circle} />
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.5 }}
+      >
+        <div className={classNames(ContactStyles.scene, 'z-[1]')}>
+          <div className={ContactStyles.clip}>
+            <div className={ContactStyles.container}>
+              <div className={classNames(ContactStyles.circle, ContactStyles.border)} />
+              <div className={classNames(ContactStyles.circle, ContactStyles.border)} />
+              <div className={classNames(ContactStyles.circle, ContactStyles.border)} />
+              <div className={classNames(ContactStyles.circle, ContactStyles.border)} />
+              <div className={classNames(ContactStyles.circle, ContactStyles.border)} />
+              <div className={classNames(ContactStyles.circle, ContactStyles.border)} />
+              <div className={classNames(ContactStyles.circle, ContactStyles.border)} />
+              <div className={classNames(ContactStyles.circle, ContactStyles.border)} />
+              <div className={classNames(ContactStyles.circle, ContactStyles.border)} />
+              <div className={classNames(ContactStyles.circle, ContactStyles.border)} />
+              <div className={ContactStyles.circle} />
+              <div className={ContactStyles.circle} />
+              <div className={ContactStyles.circle} />
+              <div className={ContactStyles.circle} />
+              <div className={ContactStyles.circle} />
+            </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 }

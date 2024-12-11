@@ -30,7 +30,7 @@ export function inViewStaggerProps() {
       },
       viewport: { once: true },
       initial: 'hidden',
-      whileInView: 'show',
+      animate: 'show'
     },
     children: {
       variants: {

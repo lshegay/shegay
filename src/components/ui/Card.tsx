@@ -37,7 +37,7 @@ export default function Card(p: CardProps) {
       // biome-ignore lint/a11y/useValidAnchor: <explanation>
       onClick={(e) => {
         if (!props.href) return;
-
+        e.preventDefault();
         e.stopPropagation();
 
         router.push(props.href, { scroll });

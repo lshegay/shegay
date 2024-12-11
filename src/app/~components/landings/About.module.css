@@ -1,0 +1,5 @@
+.background {
+  background-color: hsla(204, 0%, 100%, 1);
+  background-image: radial-gradient(circle at 0% 0%, hsla(19.326923076923077, 86%, 53%, 0.35) 3.1210986267166043%, transparent 40%), radial-gradient(circle at 100% 0%, hsla(23.823529411764703, 77%, 74%, 0.35) 3%, transparent 40%), radial-gradient(circle at 50% 0%, hsla(236.91176470588243, 77%, 74%, 0.24) 4%, transparent 40%);
+  background-blend-mode: normal, normal, normal;
+}

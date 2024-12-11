@@ -39,9 +39,10 @@ export default function Button(p: ButtonProps) {
       transition={{ type: 'spring' }}
       // biome-ignore lint/a11y/useValidAnchor: <explanation>
       onClick={(e) => {
-        if (!props.href) return;
+        if (!props.href || props.target) return;
 
         e.stopPropagation();
+        e.preventDefault();
 
         router.push(props.href, { scroll });
       }}

@@ -2,9 +2,9 @@ import { useMemo } from 'react';
 import { randomInt } from 'es-toolkit';
 import classNames from 'classnames';
 import Autotext from '@/components/animations/Autotext';
-import TextBackgroundStyles from './TextBackground.module.css';
+import DefaultStyles from './Default.module.css';
 
-export default function Text() {
+export default function Default() {
   const autotextElements = useMemo(
     () =>
       new Array(5).fill(0).map((_, index) => {
@@ -44,7 +44,7 @@ export default function Text() {
       </div>
       <div
         className={classNames(
-          TextBackgroundStyles.background,
+          DefaultStyles.background,
           'absolute top-0 left-0 z-0 h-full w-[150%]',
         )}
       />

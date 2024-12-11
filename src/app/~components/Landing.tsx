@@ -207,7 +207,7 @@ export default function Landing(props: LandingProps) {
             </motion.h2>
           </div>
         </div>
-        <div className="flex flex-col md:flex-row mx-5 md:mx-20 mb-20">
+        <motion.div {...staggerProps.parent} className="flex flex-col md:flex-row mx-5 md:mx-20 mb-20">
           <motion.div
             variants={{
               hidden: { opacity: 0, y: -50 },
@@ -243,7 +243,7 @@ export default function Landing(props: LandingProps) {
             </Card>
           </motion.div>
           <div className="flex md:flex-row">{buttonElements}</div>
-        </div>
+        </motion.div>
       </motion.div>
 
       {/* Background */}

@@ -1,3 +1,5 @@
+'use client'
+
 import { useRef } from 'react';
 import { type MotionValue, useScroll, useSpring, useTransform } from 'motion/react';
 

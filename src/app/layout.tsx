@@ -1,10 +1,12 @@
-import type React from 'react';
+import type { ReactNode } from 'react';
 import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import localFont from 'next/font/local';
+import classNames from 'classnames';
+
+import PageTransition from './~components/PageTransition';
 
 import '@/styles/globals.css';
-import classNames from 'classnames';
 
 const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-inter' });
 const radwave = localFont({
@@ -42,10 +44,14 @@ export const viewport: Viewport = {
   width: 'device-width',
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={classNames('dark', inter.className, radwave.variable)}>
-      <body className="dark:bg-black dark:text-white">{children}</body>
+      <body className="dark:bg-black dark:text-white">
+        <PageTransition>
+          {children}
+        </PageTransition>
+      </body>
     </html>
   );
 }
