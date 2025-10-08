@@ -4,18 +4,16 @@ export const transition = {
   stiffness: 100,
 };
 
-export function inViewProps() {
-  return {
-    whileInView: { opacity: 1, y: 0 },
-    initial: { opacity: 0, y: 50 },
-    transition: {
-      type: 'spring',
-      delay: 0.25,
-      damping: 20,
-    },
-    viewport: { once: true },
-  };
-}
+export const inViewProps = {
+  whileInView: { opacity: 1, y: 0 },
+  initial: { opacity: 0, y: 50 },
+  transition: {
+    type: 'spring',
+    delay: 0.25,
+    damping: 20,
+  },
+  viewport: { once: true },
+};
 
 export function inViewStaggerProps() {
   return {
@@ -30,7 +28,7 @@ export function inViewStaggerProps() {
       },
       viewport: { once: true },
       initial: 'hidden',
-      animate: 'show'
+      whileInView: 'show',
     },
     children: {
       variants: {

@@ -47,10 +47,10 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={classNames('dark', inter.className, radwave.variable)}>
-      <body className="dark:bg-black dark:text-white">
-        <PageTransition>
+      <body className="dark:bg-black dark:text-white overscroll-none">
+        {/* <PageTransition> */}
           {children}
-        </PageTransition>
+        {/* </PageTransition> */}
       </body>
     </html>
   );

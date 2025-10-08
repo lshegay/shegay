@@ -1,3 +1,5 @@
+'use client'
+
 import cl from 'classnames';
 import type { DivProps } from 'react-html-props';
 

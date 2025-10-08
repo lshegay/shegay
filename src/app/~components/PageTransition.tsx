@@ -16,23 +16,6 @@ export function FrozenRoute({ children }: Props) {
   return <LayoutRouterContext.Provider value={frozen}>{children}</LayoutRouterContext.Provider>;
 }
 
-/* {!isPresent && (
-        <div className="absolute top-0 left-0 w-full h-full z-50">
-          <motion.div
-            className="absolute top-0 left-0 w-full bg-black"
-            initial={{ height: '0%' }}
-            animate={{ height: '50%' }}
-            transition={{ duration: 0.25 }}
-          ></motion.div>
-          <motion.div
-            className="absolute bottom-0 left-0 w-full bg-black"
-            initial={{ height: '0%' }}
-            animate={{ height: '50%' }}
-            transition={{ duration: 0.25 }}
-          ></motion.div>
-        </div>
-      )} */
-
 export default function PageTransition(p: Props) {
   const pathname = usePathname();
 

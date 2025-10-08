@@ -1,7 +1,9 @@
 import { useMemo } from 'react';
 import { randomInt } from 'es-toolkit';
 import classNames from 'classnames';
+
 import Autotext from '@/components/animations/Autotext';
+
 import DefaultStyles from './Default.module.css';
 
 export default function Default() {

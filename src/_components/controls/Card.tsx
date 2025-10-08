@@ -1,3 +1,5 @@
+'use client'
+
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { motion, useScroll, useSpring, useTransform } from 'motion/react';
 import Image from 'next/image';
@@ -9,7 +11,7 @@ import type { DivProps } from 'react-html-props';
 import Light from '../decorations/Light';
 import type { Thumbnail } from '@/utils/ssg';
 import { transition } from '@/utils';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 type Props = DivProps & {
   title: string;
@@ -134,7 +136,7 @@ export default function Card({
       onClick={(e) => {
         if (target != '_blank') {
           e.preventDefault();
-          router.push(link, undefined, { scroll: false });
+          router.push(link, undefined);
         }
       }}
     >

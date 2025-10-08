@@ -1,14 +1,10 @@
 'use client';
 
-import { useEffect, useMemo, useRef } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { Contact, Default, Works, About } from './landings';
+import { useEffect, useRef } from 'react';
 
-type Props = {
-  state: 'default' | 'works' | 'about' | 'contact';
-};
+import Default from './Default';
 
-export function LandingBackground({ state = 'default' }: Props) {
+export function LandingBackground() {
   const canvas = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -52,38 +48,9 @@ export function LandingBackground({ state = 'default' }: Props) {
     };
   });
 
-  const landingElement = useMemo(() => {
-    switch (state) {
-      case 'default': {
-        return <Default />;
-      }
-      case 'works': {
-        return <Works />;
-      }
-      case 'about': {
-        return <About />;
-      }
-      case 'contact': {
-        return <Contact />;
-      }
-      default:
-        break;
-    }
-  }, [state]);
-
   return (
     <div className="absolute top-0 left-0 h-full z-0 w-full overflow-hidden">
-      <AnimatePresence mode="wait">
-        <motion.div
-          className="overflow-hidden w-full h-full"
-          key={state}
-          initial={{ scale: 0.7, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          exit={{ scale: 0.7, opacity: 0 }}
-        >
-          {landingElement}
-        </motion.div>
-      </AnimatePresence>
+      <Default />
       <div
         className="absolute top-0 left-0 z-[2] h-full w-full
           bg-gradient-to-b from-transparent via-90% via-black to-black"

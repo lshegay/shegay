@@ -1,3 +1,5 @@
+'use client'
+
 import { useEffect } from 'react';
 import type { DivProps } from 'react-html-props';
 import classNames from 'classnames';
